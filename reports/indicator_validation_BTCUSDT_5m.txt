@@ -1,0 +1,60 @@
+==============================================================================
+Indicator engine validation report
+==============================================================================
+
+Symbol:              BTCUSDT
+Market:              Spot
+Interval:            5m
+Period:              2024-01-01 .. 2025-12-31 (UTC, end date inclusive)
+Generated:           2026-09-09 09:09:35 UTC
+
+Counts
+------------------------------------------------------------------------------
+Input rows:          210528
+Output rows:         210528
+First timestamp:     2024-01-01 00:00:00 UTC
+Last timestamp:      2025-12-31 23:55:00 UTC
+
+Indicator parameters
+------------------------------------------------------------------------------
+EMA fast:            20  -> ema20
+EMA slow:            50  -> ema50
+RSI (Wilder):        14  -> rsi14
+Volume SMA:          20  -> volume_ma20
+
+Warm-up NaNs (leading, expected when source has no holes)
+------------------------------------------------------------------------------
+ema20              expected 19     actual 19
+ema50              expected 49     actual 49
+rsi14              expected 14     actual 14
+volume_ma20        expected 19     actual 19
+
+Schema
+------------------------------------------------------------------------------
+Required OHLCV:      timestamp, open, high, low, close, volume
+Indicator columns:   ema20, ema50, rsi14, volume_ma20
+Indicator dtypes:    float64 OK
+Timestamp dtype:     datetime64[ns, UTC]
+
+Preservation
+------------------------------------------------------------------------------
+OHLCV preserved:     OK
+Timestamps preserved:OK
+Extra columns kept:  OK
+Duplicate timestamps:0
+
+Month-boundary continuity
+------------------------------------------------------------------------------
+Calculations use only close/volume in row order. Calendar months
+are storage boundaries, not calculation inputs.
+Months compared:     2024-01 -> 2024-02
+Carried forward:     OK (ema20 full-series 42617.35420962283 vs month-only nan)
+Enriched matches full series: OK
+
+Findings
+------------------------------------------------------------------------------
+No problems detected.
+
+==============================================================================
+STATUS: PASS
+==============================================================================

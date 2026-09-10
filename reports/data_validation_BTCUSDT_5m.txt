@@ -1,0 +1,57 @@
+==============================================================================
+Binance historical data validation report
+==============================================================================
+
+Symbol:              BTCUSDT
+Market:              Spot
+Interval:            5m
+Configured period:   2024-01-01 .. 2025-12-31 (UTC, end date inclusive)
+Source:              https://data.binance.vision/data
+Generated:           2026-09-09 08:28:25 UTC
+
+Candle counts
+------------------------------------------------------------------------------
+Expected candles:    210528
+Actual candles:      210528
+Unique timestamps:   210528
+Missing candles:     0
+
+Integrity
+------------------------------------------------------------------------------
+Duplicates:          0
+Invalid OHLC:        0
+Invalid prices:      0
+Invalid volume:      0
+Timestamp errors:    0
+
+Boundaries
+------------------------------------------------------------------------------
+First candle:        2024-01-01 00:00:00 UTC
+Last candle:         2025-12-31 23:55:00 UTC
+Expected first:      2024-01-01 00:00:00 UTC
+Expected last:       2025-12-31 23:55:00 UTC
+Boundary check:      OK
+
+Gap report
+------------------------------------------------------------------------------
+Expected interval:   5 minutes (5m)
+Total candles:       210528
+Missing intervals:   0
+Missing candles:     0
+
+Source archives
+------------------------------------------------------------------------------
+Archives used:       24
+Newly downloaded:    0
+Already verified:    24
+Not published:       0
+Epoch units seen:    ms, us
+CSV header rows:     absent
+
+Findings
+------------------------------------------------------------------------------
+No problems detected.
+
+==============================================================================
+STATUS: PASS
+==============================================================================

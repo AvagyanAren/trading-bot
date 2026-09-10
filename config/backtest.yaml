@@ -1,0 +1,27 @@
+# Trading Bot v0.4 - backtest / risk / execution configuration.
+#
+# Experimental assumptions for the historical simulator. These are not
+# proven optimal values and are not live Binance account facts.
+#
+# Strategy entry parameters stay in config/strategy.yaml.
+# Indicator periods stay in config/indicators.yaml.
+# Dataset identity stays in config/data.yaml.
+#
+# TIME_EXIT / max_holding_candles are intentionally absent.
+
+backtest:
+  starting_capital: 20          # project forward constraint (USDT)
+
+risk:
+  risk_per_trade: 0.01          # 1% of cash at fill time
+  stop_loss: 0.01               # 1% below actual entry fill
+  take_profit: 0.02             # 2% above actual entry fill
+
+execution:
+  entry_model: next_open        # signal candle N fills at N+1 OPEN only
+  slippage: 0.0005              # 0.05% experimental assumption, adverse both sides
+  same_candle_priority: stop_loss
+
+fees:
+  entry_rate: 0.001             # 0.1% experimental assumption, not a live fee fact
+  exit_rate: 0.001

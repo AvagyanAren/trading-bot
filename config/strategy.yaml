@@ -1,0 +1,22 @@
+# Trading Bot v0.3 - strategy engine configuration.
+#
+# Strategy-specific parameters only. Indicator periods stay in
+# config/indicators.yaml and are not duplicated here. The engine reads
+# ema/rsi/volume-ma *columns* produced by v0.2; it never recalculates them.
+#
+# breakout_period is intentionally independent of indicator periods such as
+# volume_ma_period, even when both happen to be 20. Do not treat them as the
+# same parameter, do not derive one from the other, and do not reuse the
+# volume SMA window as the breakout lookback.
+#
+#   breakout_period   - how many previous *closed* candle highs define the
+#                       breakout level (current high is never included)
+#   volume_ma_period  - v0.2 indicator only; lives in indicators.yaml
+
+strategy:
+  name: breakout_volume_ema_rsi
+  version: "0.3"
+  breakout_period: 20
+  volume_multiplier: 1.5
+  rsi_min: 50
+  rsi_max: 70

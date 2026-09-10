@@ -1,0 +1,87 @@
+==============================================================================
+Backtest engine validation report
+==============================================================================
+
+STATUS: PASS means the simulator matched the specified v0.4
+implementation/integrity rules and passed its validation tests.
+It does NOT mean the strategy is profitable, has positive
+expectancy, is statistically significant, is suitable for live
+trading, should be deployed, or has been optimized.
+
+Symbol:              BTCUSDT
+Market:              Spot
+Interval:            5m
+Period:              2024-01-01 .. 2025-12-31 (UTC, end date inclusive)
+Generated:           2026-09-10 13:40:50 UTC
+
+Strategy (consumed unchanged from v0.3)
+------------------------------------------------------------------------------
+Name:                breakout_volume_ema_rsi
+Version:             0.3
+
+Experimental execution assumptions (not live account facts)
+------------------------------------------------------------------------------
+Starting capital:    20.0
+Risk per trade:      0.01
+Stop loss:           0.01
+Take profit:         0.02
+Entry model:         next_open
+Slippage:            0.0005
+Same-candle:         stop_loss
+Entry fee rate:      0.001
+Exit fee rate:       0.001
+
+Counts
+------------------------------------------------------------------------------
+Candles processed:   210528
+Signals received:    2621
+Entries executed:    766
+Trades closed:       766
+Unresolved (OPEN):   0
+Ignored POSITION_OPEN:       1855
+Ignored NO_NEXT_CANDLE:      0
+Ignored INSUFFICIENT_CASH:   0
+
+Exit reasons (closed + unresolved)
+------------------------------------------------------------------------------
+SL:                  516
+TP:                  250
+END_OF_DATA:         0
+
+Totals
+------------------------------------------------------------------------------
+Total entry fees:    6.725043036533116
+Total exit fees:     6.72081761892159
+Total slippage:      6.722930952104964
+Total gross P&L:     2.4975133405782928
+Total net P&L:       -17.67127826698138
+realized_net_pnl:    -17.671278266981382
+Final cash:          2.3287217330193317
+
+Informational / unrealized (not a fill, not realized)
+------------------------------------------------------------------------------
+unrealized_mark_value:  n/a (no open position)
+informational_equity:   n/a (no open position)
+
+Integrity
+------------------------------------------------------------------------------
+Input not mutated:   OK
+Deterministic:       OK
+No negative cash:    OK
+P&L identities:      OK
+Cash reconciles:     OK
+Realized excludes OPEN: OK
+No TIME_EXIT:        OK
+Last-bar no phantom: OK
+Pending cleared:     OK
+
+Findings
+------------------------------------------------------------------------------
+No problems detected.
+
+==============================================================================
+STATUS: PASS
+==============================================================================
+
+STATUS: PASS is simulator integrity only. It is not a claim that
+the strategy is profitable or ready for live trading.

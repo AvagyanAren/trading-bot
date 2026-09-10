@@ -1,0 +1,21 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Staging area for in-flight downloads only.
+data/downloads/**
+!data/downloads/.gitkeep
+!data/downloads/**/.gitkeep
+
+# Editor and OS noise
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

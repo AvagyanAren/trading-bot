@@ -1,0 +1,34 @@
+# Trading Bot v0.1 - data pipeline configuration.
+#
+# Every parameter the pipeline needs lives here. No symbol, period, path or URL
+# literal is duplicated in Python code.
+
+# --- Dataset identity -------------------------------------------------------
+symbol: BTCUSDT
+market: spot          # Binance Public Data market segment (spot | um | cm)
+data_type: klines     # Binance Public Data data type
+interval: 5m
+
+# Inclusive UTC date range. The last candle of end_date is included, so
+# end_date 2025-12-31 with a 5m interval expects a final candle at 23:55 UTC.
+start_date: 2024-01-01
+end_date: 2025-12-31
+
+# --- Source -----------------------------------------------------------------
+# Official Binance Public Data archive. See https://github.com/binance/binance-public-data
+base_url: https://data.binance.vision/data
+
+# --- Filesystem layout ------------------------------------------------------
+# Paths are resolved relative to the project root.
+raw_dir: data/raw/binance
+processed_dir: data/processed
+downloads_dir: data/downloads
+reports_dir: reports
+
+# --- Download behaviour -----------------------------------------------------
+download:
+  max_retries: 4          # attempts per file on transient failures
+  backoff_seconds: 2.0    # base for exponential backoff between retries
+  timeout_seconds: 60
+  chunk_size: 262144      # 256 KiB streaming chunks
+  verify_existing: true   # re-verify SHA-256 of already-present raw files

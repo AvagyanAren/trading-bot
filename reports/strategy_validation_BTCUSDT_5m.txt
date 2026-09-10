@@ -1,0 +1,62 @@
+==============================================================================
+Strategy engine validation report
+==============================================================================
+
+Symbol:              BTCUSDT
+Market:              Spot
+Interval:            5m
+Period:              2024-01-01 .. 2025-12-31 (UTC, end date inclusive)
+Generated:           2026-09-10 12:30:16 UTC
+
+Strategy
+------------------------------------------------------------------------------
+Name:                breakout_volume_ema_rsi
+Version:             0.3
+Breakout period:     20  (independent of volume_ma_period)
+Volume multiplier:   1.5
+RSI filter:          50.0 < rsi < 70.0
+Indicator columns:   ema20, ema50, rsi14, volume_ma20
+
+Counts
+------------------------------------------------------------------------------
+Candles evaluated:   210528
+Warm-up rows:        49
+LONG_ENTRY signals:  2621
+First LONG_ENTRY:    2024-01-01 09:10:00 UTC
+Last LONG_ENTRY:     2025-12-31 14:05:00 UTC
+
+Condition failures (non-warm-up rows, counted independently)
+------------------------------------------------------------------------------
+ema_trend false:     100244
+breakout false:      197549
+volume false:        176839
+rsi_filter false:    109025
+
+Timing
+------------------------------------------------------------------------------
+Signals are evaluated after candle close. reference_close is an
+audit value, not a fill. earliest_execution_time is the next
+interval boundary — a timing label only. v0.3 does not execute.
+Last-bar label:      2026-01-01 00:00:00 UTC
+Last-bar outside dataset: OK
+
+Integrity
+------------------------------------------------------------------------------
+Input not mutated:   OK
+Deterministic:       OK
+Required OHLCV:      timestamp, open, high, low, close, volume
+
+Month-boundary continuity
+------------------------------------------------------------------------------
+Breakout history uses previous rows in series order. Calendar
+months are storage boundaries, not strategy resets.
+Months compared:     2024-01 -> 2024-02
+Carried forward:     OK (breakout_level full-series 42690.42 vs month-only None)
+
+Findings
+------------------------------------------------------------------------------
+No problems detected.
+
+==============================================================================
+STATUS: PASS
+==============================================================================
