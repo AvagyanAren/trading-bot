@@ -630,3 +630,121 @@ The backtest does not place orders, does not use API keys, does not paper
 trade, and does not compute Sharpe, Sortino, walk-forward, or Monte Carlo
 statistics. Those belong to later components. Invalid input is not repaired.
 
+---
+
+# v0.5 — Research and Analytics Layer
+
+v0.5 sits on top of the v0.3 strategy and the v0.4 backtest engine. It asks
+why the baseline loses money and whether four predefined hypotheses change
+the picture. It does **not** trade live, does not talk to Binance, does not
+optimize parameters, and does not change fill, fee, slippage, SL/TP, or
+`END_OF_DATA` semantics.
+
+`STATUS: PASS` from v0.4 still means simulator integrity only. A profitable
+**DEVELOPMENT** result is not validated until the untouched out-of-sample
+test. v0.5 does not prove profitability or live readiness.
+
+## Periods
+
+| Role | Dates (UTC, end date inclusive) |
+| --- | --- |
+| DEVELOPMENT | 2024-01-01 through 2024-12-31 |
+| OUT-OF-SAMPLE / UNTOUCHED TEST | 2025-01-01 through 2025-12-31 |
+
+A/B/C/D are compared **only** on 2024. One candidate is chosen **manually**
+(`--candidate`). That frozen configuration is then run on 2025. 2025 is
+never used to select, rank, or retune a variant.
+
+Each period is an independent $20 simulation. 2025 is not a continuation of
+the 2024 account path. For 2025 signals, previous closed candles before
+1 January are used only as breakout lookback.
+
+## Strategy variants
+
+Exactly four hypotheses. No grid search.
+
+| Id | Folder | Delta versus the v0.3/v0.4 baseline |
+| --- | --- | --- |
+| A | `A_baseline` | Baseline: breakout 20, volume×1.5, RSI 50–70, SL 1%, TP 2% |
+| B | `B_no_rsi` | RSI filter disabled (`rsi_filter_enabled: false`) |
+| C | `C_higher_tp` | Take profit 3% |
+| D | `D_stronger_breakout` | Breakout period 50 |
+
+Shared execution stays in [`config/backtest.yaml`](config/backtest.yaml):
+starting capital **$20**, 1% risk, 1% SL, 0.05% slippage, 0.1% fees,
+next-open entry, same-candle SL first.
+
+## Metrics
+
+Closed-trade `net_pnl` and `R` keep the v0.4 definitions. OPEN / `END_OF_DATA`
+rows keep realized fields NULL and are excluded from realized totals.
+
+Account endings are never collapsed into “ending capital”:
+
+- `ending_cash` — v0.4 cash after the last event
+- `ending_realized_equity` — `$20 + sum(CLOSED net_pnl)`
+- `ending_mtm_equity` — cash plus `quantity * last_close` if a position is still open (informational, not realized)
+
+`average_net_pnl_per_closed_trade` and `average_R_per_closed_trade` are
+first-class fields (expectancy is the same pair of values).
+
+**Global max drawdown** is peak-to-trough on the complete-period MTM equity
+curve. Monthly max drawdown is an extra intra-month diagnostic only.
+
+`equity.csv` columns, in order: `timestamp`, `cash`, `position_quantity`,
+`position_mark_value`, `realized_equity`, `mtm_equity`, `unrealized_pnl`,
+`drawdown`, `drawdown_pct`. Row-level drawdown uses the global running peak.
+
+## How to run
+
+Requires the v0.2 enriched store. Do not change `config/data.yaml` for a
+research run.
+
+```powershell
+.\.venv\Scripts\python.exe scripts\run_research.py --stage development
+.\.venv\Scripts\python.exe scripts\run_research.py --stage compare
+# read reports/research/development/selection_checklist.txt, then:
+.\.venv\Scripts\python.exe scripts\run_research.py --stage test --candidate A
+```
+
+Optional engine regression against the committed v0.4 full-period totals
+(writes under `reports/research/integrity/`, never overwrites
+`reports/backtest_validation_*.txt`):
+
+```powershell
+.\.venv\Scripts\python.exe scripts\run_research.py --stage integrity
+```
+
+Exit codes: `0` completed, `1` integrity/selection/pipeline failure, `2`
+configuration or usage error.
+
+## Reports
+
+Outputs live under [`reports/research/`](reports/research/), not in the v0.4
+flat `reports/backtest_*` files.
+
+```
+reports/research/development/{A_baseline,B_no_rsi,C_higher_tp,D_stronger_breakout}/
+reports/research/development/comparison.txt
+reports/research/development/selection_checklist.txt
+reports/research/test/{candidate}/OUT_OF_SAMPLE.txt
+```
+
+Each experiment folder contains `config_snapshot.yaml`, `summary.txt` (or
+`OUT_OF_SAMPLE.txt`), `metrics.csv`, `monthly.csv`, `yearly.csv`,
+`distributions.csv`, `trades.csv`, `ignored.csv`, and `equity.csv`.
+
+## Selection
+
+[`selection_checklist.txt`](reports/research/development/selection_checklist.txt)
+applies research eligibility **heuristics** (sample size, positive expectancy
+after costs, positive gross, global drawdown cap, concentration, monthly
+coverage). They are **not** statistically validated thresholds. Nothing
+auto-selects a winner. `--candidate` is always explicit.
+
+## v0.5 does not add
+
+Live trading, paper trading, Binance API keys, leverage, SHORT, a dashboard,
+a parameter optimizer, Sharpe, Sortino, Monte Carlo, walk-forward, or
+regime analysis. Starting capital in baseline examples remains **$20**.
+

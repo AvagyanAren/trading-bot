@@ -1,0 +1,73 @@
+# Trading Bot v0.5 - research / analytics configuration.
+#
+# v0.5 is a research layer above the v0.4 engine. It does not change
+# fills, fees, slippage, SL/TP, or END_OF_DATA semantics.
+#
+# Development: 2024-01-01 through 2024-12-31. A/B/C/D are compared here only.
+# Test: 2025-01-01 through 2025-12-31. Untouched out-of-sample. Never used
+# to select or retune a candidate.
+#
+# Eligibility gates below are research heuristics. They are NOT statistically
+# validated thresholds, not a proof of robustness, and not a claim that a
+# passing variant is profitable or live-ready.
+
+research:
+  output_dir: reports/research
+
+periods:
+  development:
+    start: 2024-01-01
+    end: 2024-12-31
+    role: DEVELOPMENT
+  test:
+    start: 2025-01-01
+    end: 2025-12-31
+    role: OUT-OF-SAMPLE / UNTOUCHED TEST
+
+gates:
+  min_closed_trades: 30
+  max_drawdown_pct_of_starting_capital: 0.50
+  max_largest_win_share_of_wins: 0.40
+  min_months_with_trades: 6
+  max_single_month_net_share: 0.70
+
+# Only deltas versus config/strategy.yaml and config/backtest.yaml.
+# Shared execution (capital $20, 1% risk, 1% SL, 0.05% slippage, 0.1% fees)
+# is inherited and cannot be overridden here.
+variants:
+  A:
+    folder: A_baseline
+    label: BASELINE
+    breakout_period: 20
+    volume_multiplier: 1.5
+    rsi_min: 50
+    rsi_max: 70
+    rsi_filter_enabled: true
+    take_profit: 0.02
+  B:
+    folder: B_no_rsi
+    label: NO RSI
+    breakout_period: 20
+    volume_multiplier: 1.5
+    rsi_min: 50
+    rsi_max: 70
+    rsi_filter_enabled: false
+    take_profit: 0.02
+  C:
+    folder: C_higher_tp
+    label: HIGHER TAKE PROFIT
+    breakout_period: 20
+    volume_multiplier: 1.5
+    rsi_min: 50
+    rsi_max: 70
+    rsi_filter_enabled: true
+    take_profit: 0.03
+  D:
+    folder: D_stronger_breakout
+    label: STRONGER BREAKOUT
+    breakout_period: 50
+    volume_multiplier: 1.5
+    rsi_min: 50
+    rsi_max: 70
+    rsi_filter_enabled: true
+    take_profit: 0.02

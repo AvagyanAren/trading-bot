@@ -85,6 +85,7 @@ class StrategyConfig:
     rsi_min: float
     rsi_max: float
     project_root: Path
+    rsi_filter_enabled: bool = True
 
 
 def _require_name(raw: object, key: str) -> str:
@@ -109,6 +110,12 @@ def _require_number(raw: object, key: str) -> float:
             f"strategy.{key} must be a number, got {raw!r}"
         )
     return float(raw)
+
+
+def _require_bool(raw: object, key: str) -> bool:
+    if not isinstance(raw, bool):
+        raise StrategyConfigError(f"strategy.{key} must be a boolean, got {raw!r}")
+    return raw
 
 
 def load_strategy_config(config_path: Path) -> StrategyConfig:
@@ -145,6 +152,9 @@ def load_strategy_config(config_path: Path) -> StrategyConfig:
             f"strategy.version must be a string, got {version!r}"
         )
 
+    rsi_filter_raw = block.get("rsi_filter_enabled", True)
+    rsi_filter_enabled = _require_bool(rsi_filter_raw, "rsi_filter_enabled")
+
     return StrategyConfig(
         name=_require_name(block.get("name"), "name"),
         version=str(version).strip(),
@@ -155,6 +165,7 @@ def load_strategy_config(config_path: Path) -> StrategyConfig:
         rsi_min=rsi_min,
         rsi_max=rsi_max,
         project_root=config_path.parent.parent,
+        rsi_filter_enabled=rsi_filter_enabled,
     )
 
 
@@ -245,20 +256,22 @@ def evaluate_closed_candle(
         ),
         rsi_filter=rsi_filter(rsi, strategy_config.rsi_min, strategy_config.rsi_max),
     )
-    warmup = any(
-        value is None
-        for value in (
-            conditions.ema_trend,
-            conditions.breakout,
-            conditions.volume_confirmation,
-            conditions.rsi_filter,
-        )
-    )
+    warmup_parts = [
+        conditions.ema_trend,
+        conditions.breakout,
+        conditions.volume_confirmation,
+    ]
+    if strategy_config.rsi_filter_enabled:
+        warmup_parts.append(conditions.rsi_filter)
+    warmup = any(value is None for value in warmup_parts)
     fired = (
         conditions.ema_trend is True
         and conditions.breakout is True
         and conditions.volume_confirmation is True
-        and conditions.rsi_filter is True
+        and (
+            (not strategy_config.rsi_filter_enabled)
+            or conditions.rsi_filter is True
+        )
     )
     earliest = timestamp + interval_to_timedelta(interval)
     return Signal(

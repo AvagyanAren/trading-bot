@@ -99,6 +99,32 @@ def test_false_rsi_blocks_entry(tiny_indicator, tiny_strategy):
     assert result["signal"].iloc[index] == SignalType.NONE.value
 
 
+def test_rsi_filter_disabled_allows_entry_outside_band(tmp_path, tiny_indicator):
+    strategy = strategy_config(tmp_path, rsi_filter_enabled=False)
+    frame = entry_ready_frame(5, tiny_indicator, strategy)
+    index = strategy.breakout_period
+    frame.loc[index, tiny_indicator.rsi_column] = 80.0
+    result = generate_signals(
+        frame, strategy, tiny_indicator, interval="5m", symbol="BTCUSDT"
+    )
+    assert result["rsi_filter"].iloc[index] == False  # noqa: E712
+    assert bool(result["warmup"].iloc[index]) is False
+    assert result["signal"].iloc[index] == SignalType.LONG_ENTRY.value
+
+
+def test_rsi_nan_is_not_warmup_when_filter_disabled(tmp_path, tiny_indicator):
+    strategy = strategy_config(tmp_path, rsi_filter_enabled=False)
+    frame = entry_ready_frame(5, tiny_indicator, strategy)
+    index = strategy.breakout_period
+    frame.loc[index, tiny_indicator.rsi_column] = np.nan
+    result = generate_signals(
+        frame, strategy, tiny_indicator, interval="5m", symbol="BTCUSDT"
+    )
+    assert result["rsi_filter"].iloc[index] is None
+    assert bool(result["warmup"].iloc[index]) is False
+    assert result["signal"].iloc[index] == SignalType.LONG_ENTRY.value
+
+
 def test_two_false_conditions_still_no_entry(tiny_indicator, tiny_strategy):
     frame = entry_ready_frame(5, tiny_indicator, tiny_strategy)
     index = tiny_strategy.breakout_period
@@ -392,8 +418,27 @@ def test_load_strategy_config_reads_yaml(tmp_path: Path):
     assert loaded.volume_multiplier == pytest.approx(1.5)
     assert loaded.rsi_min == pytest.approx(50.0)
     assert loaded.rsi_max == pytest.approx(70.0)
+    assert loaded.rsi_filter_enabled is True
     assert not hasattr(loaded, "volume_ma_period")
     assert not hasattr(loaded, "ema_fast")
+
+
+def test_load_strategy_config_reads_rsi_filter_enabled_false(tmp_path: Path):
+    config_dir = tmp_path / "config"
+    config_dir.mkdir()
+    (config_dir / "strategy.yaml").write_text(
+        "strategy:\n"
+        "  name: breakout_volume_ema_rsi\n"
+        '  version: "0.3"\n'
+        "  breakout_period: 20\n"
+        "  volume_multiplier: 1.5\n"
+        "  rsi_min: 50\n"
+        "  rsi_max: 70\n"
+        "  rsi_filter_enabled: false\n",
+        encoding="utf-8",
+    )
+    loaded = load_strategy_config(config_dir / "strategy.yaml")
+    assert loaded.rsi_filter_enabled is False
 
 
 def test_load_strategy_config_rejects_rsi_min_not_less_than_max(tmp_path: Path):

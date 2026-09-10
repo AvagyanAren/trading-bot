@@ -40,6 +40,7 @@ def strategy_config(
     volume_multiplier: float = 1.5,
     rsi_min: float = 50.0,
     rsi_max: float = 70.0,
+    rsi_filter_enabled: bool = True,
 ) -> StrategyConfig:
     return StrategyConfig(
         name=name,
@@ -49,6 +50,7 @@ def strategy_config(
         rsi_min=rsi_min,
         rsi_max=rsi_max,
         project_root=tmp_path,
+        rsi_filter_enabled=rsi_filter_enabled,
     )
 
 
