@@ -10,7 +10,11 @@ import pytest
 
 from src.backtest.engine import run_backtest
 from src.research.config import ROLE_DEVELOPMENT
-from src.research.experiments import run_experiment
+from src.research.experiments import (
+    ResearchExperimentError,
+    configs_from_snapshot,
+    run_experiment,
+)
 from src.strategy.engine import generate_signals
 from tests.backtest.conftest import make_backtest_config
 from tests.strategy.conftest import (
@@ -100,6 +104,58 @@ def test_variant_b_fires_when_rsi_is_80(tmp_path: Path):
     without = generate_signals(frame, disabled, indicator, interval="5m", symbol="BTCUSDT")
     assert with_rsi["signal"].iloc[index] == "NONE"
     assert without["signal"].iloc[index] == "LONG_ENTRY"
+
+
+def test_configs_from_snapshot_round_trip(tmp_path: Path):
+    indicator = indicator_config(tmp_path)
+    strategy = strategy_config(tmp_path, breakout_period=3, rsi_filter_enabled=False)
+    research = make_research_config(tmp_path)
+    candles = entry_ready_frame(30, indicator, strategy, start="2024-01-01 00:00:00")
+    artifacts = run_experiment(
+        candles,
+        variant=research.variant("B"),
+        strategy_config=strategy,
+        indicator_config=indicator,
+        backtest_config=make_backtest_config(tmp_path, take_profit=0.02),
+        period_start=date(2024, 1, 1),
+        period_end=date(2024, 12, 31),
+        period_role=ROLE_DEVELOPMENT,
+        symbol="BTCUSDT",
+        interval="5m",
+    )
+    reconstructed_root = tmp_path / "from-snapshot"
+    strategy_out, backtest_out = configs_from_snapshot(
+        artifacts.snapshot, project_root=reconstructed_root
+    )
+    assert strategy_out.breakout_period == strategy.breakout_period
+    assert strategy_out.rsi_filter_enabled is False
+    assert backtest_out.take_profit == pytest.approx(0.02)
+    assert backtest_out.starting_capital == pytest.approx(20.0)
+    assert strategy_out.project_root == reconstructed_root
+    assert backtest_out.project_root == reconstructed_root
+
+
+def test_configs_from_snapshot_rejects_wrong_capital(tmp_path: Path):
+    indicator = indicator_config(tmp_path)
+    strategy = strategy_config(tmp_path, breakout_period=3)
+    research = make_research_config(tmp_path)
+    candles = entry_ready_frame(20, indicator, strategy, start="2024-01-01 00:00:00")
+    artifacts = run_experiment(
+        candles,
+        variant=research.variant("A"),
+        strategy_config=strategy,
+        indicator_config=indicator,
+        backtest_config=make_backtest_config(tmp_path),
+        period_start=date(2024, 1, 1),
+        period_end=date(2024, 12, 31),
+        period_role=ROLE_DEVELOPMENT,
+        symbol="BTCUSDT",
+        interval="5m",
+    )
+    tampered = dict(artifacts.snapshot)
+    tampered["backtest"] = dict(tampered["backtest"], starting_capital=100.0)
+    with pytest.raises(ResearchExperimentError, match="starting_capital"):
+        configs_from_snapshot(tampered, project_root=tmp_path)
 
 
 def test_variant_d_uses_50_prior_highs(tmp_path: Path):

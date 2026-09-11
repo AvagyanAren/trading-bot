@@ -652,8 +652,11 @@ test. v0.5 does not prove profitability or live readiness.
 | OUT-OF-SAMPLE / UNTOUCHED TEST | 2025-01-01 through 2025-12-31 |
 
 A/B/C/D are compared **only** on 2024. One candidate is chosen **manually**
-(`--candidate`). That frozen configuration is then run on 2025. 2025 is
-never used to select, rank, or retune a variant.
+(`--candidate`). `--stage test` loads that candidate’s frozen 2024
+`reports/research/development/{folder}/config_snapshot.yaml` and replays those
+strategy/backtest knobs on 2025. It does not re-read variant knobs from the
+current `config/research.yaml`. `periods.test` still supplies the 2025 calendar
+window only. 2025 is never used to select, rank, or retune a variant.
 
 Each period is an independent $20 simulation. 2025 is not a continuation of
 the 2024 account path. For 2025 signals, previous closed candles before
@@ -704,6 +707,7 @@ research run.
 .\.venv\Scripts\python.exe scripts\run_research.py --stage development
 .\.venv\Scripts\python.exe scripts\run_research.py --stage compare
 # read reports/research/development/selection_checklist.txt, then:
+# OOS knobs come from that candidate's development config_snapshot.yaml, not live YAML.
 .\.venv\Scripts\python.exe scripts\run_research.py --stage test --candidate A
 ```
 

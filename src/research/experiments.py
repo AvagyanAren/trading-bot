@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+from pathlib import Path
 
 import pandas as pd
 
@@ -13,7 +14,7 @@ from src.indicators.engine import IndicatorConfig
 from src.strategy.engine import SIGNAL_FRAME_COLUMNS, StrategyConfig, generate_signals
 
 from .aggregation import monthly_table, yearly_table
-from .config import ROLE_DEVELOPMENT, ResearchError, VariantSpec
+from .config import REQUIRED_STARTING_CAPITAL, ROLE_DEVELOPMENT, ResearchError, VariantSpec
 from .distributions import distribution_table
 from .equity import reconstruct_equity
 from .metrics import ExperimentMetrics, compute_metrics
@@ -86,6 +87,117 @@ def _snapshot(
             "exit_rate": backtest.exit_rate,
         },
     }
+
+
+def _snapshot_str(raw: object, key: str) -> str:
+    if not isinstance(raw, str) or not raw.strip():
+        raise ResearchExperimentError(f"{key} must be a non-empty string, got {raw!r}")
+    return raw.strip()
+
+
+def _snapshot_bool(raw: object, key: str) -> bool:
+    if not isinstance(raw, bool):
+        raise ResearchExperimentError(f"{key} must be a boolean, got {raw!r}")
+    return raw
+
+
+def _snapshot_int(raw: object, key: str) -> int:
+    if isinstance(raw, bool) or not isinstance(raw, int):
+        raise ResearchExperimentError(f"{key} must be an integer, got {raw!r}")
+    if raw < 1:
+        raise ResearchExperimentError(f"{key} must be >= 1, got {raw}")
+    return raw
+
+
+def _snapshot_number(raw: object, key: str) -> float:
+    if isinstance(raw, bool) or not isinstance(raw, (int, float)):
+        raise ResearchExperimentError(f"{key} must be a number, got {raw!r}")
+    return float(raw)
+
+
+def configs_from_snapshot(
+    snapshot: dict,
+    *,
+    project_root: Path,
+) -> tuple[StrategyConfig, BacktestConfig]:
+    """Rebuild strategy/backtest configs from a frozen development snapshot.
+
+    ``project_root`` comes from the live research config. Strategy and
+    backtest knobs come only from ``snapshot``.
+    """
+    if not isinstance(snapshot, dict):
+        raise ResearchExperimentError("snapshot must be a mapping")
+    strategy_raw = snapshot.get("strategy")
+    backtest_raw = snapshot.get("backtest")
+    if not isinstance(strategy_raw, dict):
+        raise ResearchExperimentError("snapshot.strategy must be a mapping")
+    if not isinstance(backtest_raw, dict):
+        raise ResearchExperimentError("snapshot.backtest must be a mapping")
+
+    starting_capital = _snapshot_number(
+        backtest_raw.get("starting_capital"),
+        "snapshot.backtest.starting_capital",
+    )
+    if starting_capital != REQUIRED_STARTING_CAPITAL:
+        raise ResearchExperimentError(
+            "snapshot.backtest.starting_capital must be "
+            f"{REQUIRED_STARTING_CAPITAL}, got {starting_capital}"
+        )
+
+    strategy = StrategyConfig(
+        name=_snapshot_str(strategy_raw.get("name"), "snapshot.strategy.name"),
+        version=_snapshot_str(strategy_raw.get("version"), "snapshot.strategy.version"),
+        breakout_period=_snapshot_int(
+            strategy_raw.get("breakout_period"),
+            "snapshot.strategy.breakout_period",
+        ),
+        volume_multiplier=_snapshot_number(
+            strategy_raw.get("volume_multiplier"),
+            "snapshot.strategy.volume_multiplier",
+        ),
+        rsi_min=_snapshot_number(
+            strategy_raw.get("rsi_min"), "snapshot.strategy.rsi_min"
+        ),
+        rsi_max=_snapshot_number(
+            strategy_raw.get("rsi_max"), "snapshot.strategy.rsi_max"
+        ),
+        project_root=Path(project_root),
+        rsi_filter_enabled=_snapshot_bool(
+            strategy_raw.get("rsi_filter_enabled"),
+            "snapshot.strategy.rsi_filter_enabled",
+        ),
+    )
+    backtest = BacktestConfig(
+        starting_capital=starting_capital,
+        risk_per_trade=_snapshot_number(
+            backtest_raw.get("risk_per_trade"),
+            "snapshot.backtest.risk_per_trade",
+        ),
+        stop_loss=_snapshot_number(
+            backtest_raw.get("stop_loss"), "snapshot.backtest.stop_loss"
+        ),
+        take_profit=_snapshot_number(
+            backtest_raw.get("take_profit"), "snapshot.backtest.take_profit"
+        ),
+        entry_model=_snapshot_str(
+            backtest_raw.get("entry_model"), "snapshot.backtest.entry_model"
+        ),
+        slippage=_snapshot_number(
+            backtest_raw.get("slippage"), "snapshot.backtest.slippage"
+        ),
+        same_candle_priority=_snapshot_str(
+            backtest_raw.get("same_candle_priority"),
+            "snapshot.backtest.same_candle_priority",
+        ),
+        entry_rate=_snapshot_number(
+            backtest_raw.get("entry_rate"), "snapshot.backtest.entry_rate"
+        ),
+        exit_rate=_snapshot_number(
+            backtest_raw.get("exit_rate"), "snapshot.backtest.exit_rate"
+        ),
+        project_root=Path(project_root),
+    )
+    return strategy, backtest
 
 
 def run_experiment(

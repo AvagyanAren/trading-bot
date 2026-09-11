@@ -9,10 +9,12 @@ import numpy as np
 import pandas as pd
 import yaml
 
+from src.backtest.config import BacktestConfig
 from src.backtest.ledger import STATUS_CLOSED
 from src.data.pipeline import DataConfig
 from src.indicators.engine import IndicatorConfig
 from src.indicators.pipeline import enriched_dataset_dir
+from src.strategy.engine import StrategyConfig
 from src.strategy.pipeline import read_enriched
 
 from .config import (
@@ -23,7 +25,12 @@ from .config import (
     ResearchConfigError,
     ResearchError,
 )
-from .experiments import ExperimentArtifacts, run_experiment
+from .experiments import (
+    ExperimentArtifacts,
+    ResearchExperimentError,
+    configs_from_snapshot,
+    run_experiment,
+)
 from .integrity import FROZEN_V04_FULL_PERIOD, RECONCILE_EPS
 from .metrics import ExperimentMetrics
 from .reports import (
@@ -176,10 +183,43 @@ def run_development(
 
 
 def _load_snapshot(path: Path) -> dict:
-    payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    try:
+        payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError) as error:
+        raise ResearchPipelineError(f"Cannot read snapshot {path}: {error}") from error
     if not isinstance(payload, dict):
         raise ResearchPipelineError(f"{path} is not a mapping")
     return payload
+
+
+def _load_frozen_test_configs(
+    research: ResearchConfig, experiment_id: str
+) -> tuple[StrategyConfig, BacktestConfig]:
+    variant = research.variant(experiment_id)
+    snapshot_path = (
+        research.output_dir / "development" / variant.folder / "config_snapshot.yaml"
+    )
+    if not snapshot_path.exists():
+        raise ResearchPipelineError(
+            f"Missing development snapshot for {experiment_id} at {snapshot_path}"
+        )
+    snapshot = _load_snapshot(snapshot_path)
+    snap_id = str(snapshot.get("experiment_id", "")).strip().upper()
+    if snap_id != experiment_id:
+        raise ResearchPipelineError(
+            f"Development snapshot at {snapshot_path} has experiment_id="
+            f"{snap_id!r}, expected {experiment_id!r}"
+        )
+    role = str(snapshot.get("period_role", ""))
+    if role != ROLE_DEVELOPMENT:
+        raise ResearchPipelineError(
+            f"OOS refused {snapshot_path}: period_role={role!r}, "
+            f"expected {ROLE_DEVELOPMENT!r}"
+        )
+    try:
+        return configs_from_snapshot(snapshot, project_root=research.project_root)
+    except ResearchExperimentError as error:
+        raise ResearchPipelineError(str(error)) from error
 
 
 def _metrics_from_csv(path: Path) -> dict[str, str]:
@@ -322,16 +362,23 @@ def run_test(
         raise ResearchConfigError(
             f"--candidate must be one of {list(VARIANT_ORDER)}, got {candidate!r}"
         )
+    variant = research.variant(experiment_id)
+    strategy_config, backtest_config = _load_frozen_test_configs(
+        research, experiment_id
+    )
     dest_dir = enriched_dataset_dir(data_config, indicator_config)
     _log(progress, "Reading enriched Parquet (read-only)")
     candles = read_enriched(dest_dir)
     _log(progress, f"Running OUT-OF-SAMPLE test for {experiment_id}")
-    artifacts = _run_variant(
+    artifacts = run_experiment(
         candles,
-        research,
-        indicator_config,
-        experiment_id,
-        period_role=ROLE_TEST,
+        variant=variant,
+        strategy_config=strategy_config,
+        indicator_config=indicator_config,
+        backtest_config=backtest_config,
+        period_start=research.test.start,
+        period_end=research.test.end,
+        period_role=research.test.role,
         symbol=data_config.symbol,
         interval=data_config.interval,
     )
