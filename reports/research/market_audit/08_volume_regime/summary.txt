@@ -1,0 +1,105 @@
+# Investigation 08 - Volume / volume_ma20
+
+volume ratio Q1 @12h
+  n=26297
+  mean_fwd=0.1208%  median_fwd=0.1036%  d_median_vs_base=0.0081%
+  MFE=0.9749%  MAE=0.9091%  future_vol=2.2935%
+  P(+0.5R)=72.335%  P(+1R)=49.013%  P(+2R)=22.071%
+  P(+1R before -1R)=41.324%  P(-1R before +1R)=39.640%  neither=19.036%  d_race=-1.092 pp
+  time_to_+0.5R=130.0 min  +1R=255.0 min  +2R=370.0 min
+  effect: small mixed difference
+vol Q1 ∩ bull @12h
+  n=13488
+  mean_fwd=0.1452%  median_fwd=0.0904%  d_median_vs_base=0.0233%
+  MFE=1.0093%  MAE=0.8582%  future_vol=2.3023%
+  P(+0.5R)=72.324%  P(+1R)=50.386%  P(+2R)=23.814%
+  P(+1R before -1R)=43.320%  P(-1R before +1R)=37.878%  neither=18.802%  d_race=-0.483 pp
+  time_to_+0.5R=130.0 min  +1R=240.0 min  +2R=345.0 min
+  effect: indistinguishable from baseline
+vol Q1 ∩ bear @12h
+  n=12809
+  mean_fwd=0.0951%  median_fwd=0.1183%  d_median_vs_base=-0.0053%
+  MFE=0.9423%  MAE=0.9622%  future_vol=2.2843%
+  P(+0.5R)=72.348%  P(+1R)=47.568%  P(+2R)=20.236%
+  P(+1R before -1R)=39.222%  P(-1R before +1R)=41.494%  neither=19.283%  d_race=-1.617 pp
+  time_to_+0.5R=130.0 min  +1R=270.0 min  +2R=410.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+
+volume ratio Q2 @12h
+  n=26302
+  mean_fwd=0.1252%  median_fwd=0.0895%  d_median_vs_base=-0.0060%
+  MFE=1.0283%  MAE=0.9471%  future_vol=2.3992%
+  P(+0.5R)=73.732%  P(+1R)=51.133%  P(+2R)=23.599%
+  P(+1R before -1R)=42.742%  P(-1R before +1R)=39.693%  neither=17.565%  d_race=+0.326 pp
+  time_to_+0.5R=120.0 min  +1R=240.0 min  +2R=355.0 min
+  effect: indistinguishable from baseline
+vol Q2 ∩ bull @12h
+  n=14092
+  mean_fwd=0.1241%  median_fwd=0.0674%  d_median_vs_base=0.0003%
+  MFE=1.0517%  MAE=0.9194%  future_vol=2.4479%
+  P(+0.5R)=73.297%  P(+1R)=52.115%  P(+2R)=25.092%
+  P(+1R before -1R)=44.394%  P(-1R before +1R)=38.440%  neither=17.166%  d_race=+0.591 pp
+  time_to_+0.5R=120.0 min  +1R=235.0 min  +2R=350.0 min
+  effect: indistinguishable from baseline
+vol Q2 ∩ bear @12h
+  n=12210
+  mean_fwd=0.1265%  median_fwd=0.1105%  d_median_vs_base=-0.0132%
+  MFE=1.0001%  MAE=0.9762%  future_vol=2.3575%
+  P(+0.5R)=74.234%  P(+1R)=50.000%  P(+2R)=21.876%
+  P(+1R before -1R)=40.835%  P(-1R before +1R)=41.138%  neither=18.026%  d_race=-0.004 pp
+  time_to_+0.5R=120.0 min  +1R=245.0 min  +2R=365.0 min
+  effect: indistinguishable from baseline
+
+volume ratio Q3 @12h
+  n=26312
+  mean_fwd=0.1375%  median_fwd=0.0854%  d_median_vs_base=-0.0101%
+  MFE=1.0404%  MAE=0.9699%  future_vol=2.4349%
+  P(+0.5R)=74.012%  P(+1R)=51.562%  P(+2R)=24.301%
+  P(+1R before -1R)=42.718%  P(-1R before +1R)=40.518%  neither=16.764%  d_race=+0.302 pp
+  time_to_+0.5R=120.0 min  +1R=240.0 min  +2R=355.0 min
+  effect: indistinguishable from baseline
+vol Q3 ∩ bull @12h
+  n=14277
+  mean_fwd=0.1147%  median_fwd=0.0517%  d_median_vs_base=-0.0154%
+  MFE=1.0513%  MAE=0.9544%  future_vol=2.4705%
+  P(+0.5R)=73.538%  P(+1R)=52.056%  P(+2R)=25.089%
+  P(+1R before -1R)=43.924%  P(-1R before +1R)=39.693%  neither=16.383%  d_race=+0.121 pp
+  time_to_+0.5R=120.0 min  +1R=230.0 min  +2R=350.0 min
+  effect: indistinguishable from baseline
+vol Q3 ∩ bear @12h
+  n=12035
+  mean_fwd=0.1645%  median_fwd=0.1206%  d_median_vs_base=-0.0031%
+  MFE=1.0247%  MAE=0.9955%  future_vol=2.3761%
+  P(+0.5R)=74.574%  P(+1R)=50.976%  P(+2R)=23.365%
+  P(+1R before -1R)=41.288%  P(-1R before +1R)=41.496%  neither=17.216%  d_race=+0.449 pp
+  time_to_+0.5R=115.0 min  +1R=245.0 min  +2R=365.0 min
+  effect: indistinguishable from baseline
+
+volume ratio Q4 @12h
+  n=26304
+  mean_fwd=0.1255%  median_fwd=0.1029%  d_median_vs_base=0.0074%
+  MFE=1.0521%  MAE=0.9919%  future_vol=2.4769%
+  P(+0.5R)=74.152%  P(+1R)=52.026%  P(+2R)=24.776%
+  P(+1R before -1R)=42.879%  P(-1R before +1R)=41.161%  neither=15.960%  d_race=+0.463 pp
+  time_to_+0.5R=100.0 min  +1R=225.0 min  +2R=340.0 min
+  effect: indistinguishable from baseline
+vol Q4 ∩ bull @12h
+  n=14121
+  mean_fwd=0.0973%  median_fwd=0.0557%  d_median_vs_base=-0.0114%
+  MFE=1.0428%  MAE=0.9684%  future_vol=2.4973%
+  P(+0.5R)=73.005%  P(+1R)=51.682%  P(+2R)=25.126%
+  P(+1R before -1R)=43.552%  P(-1R before +1R)=40.486%  neither=15.962%  d_race=-0.251 pp
+  time_to_+0.5R=100.0 min  +1R=220.0 min  +2R=327.5 min
+  effect: indistinguishable from baseline
+vol Q4 ∩ bear @12h
+  n=12183
+  mean_fwd=0.1581%  median_fwd=0.1494%  d_median_vs_base=0.0258%
+  MFE=1.0599%  MAE=1.0204%  future_vol=2.4527%
+  P(+0.5R)=75.482%  P(+1R)=52.426%  P(+2R)=24.370%
+  P(+1R before -1R)=42.100%  P(-1R before +1R)=41.944%  neither=15.957%  d_race=+1.260 pp
+  time_to_+0.5R=100.0 min  +1R=230.0 min  +2R=355.0 min
+  effect: small mixed difference
+
+VERDICT: C
+JUDGMENT: volume/volume_ma20 does not identify directional continuation,
+mean reversion, or even expansion. Null result.

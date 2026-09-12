@@ -1,0 +1,1 @@
+UTC weekday of the event candle. Days are not merged. Metrics as in investigation 01. Baseline = all warmup-valid 2024 observations.

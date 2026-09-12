@@ -1,0 +1,120 @@
+# Investigation 02 - Day of week (UTC)
+
+Monday @12h
+  n=15215
+  mean_fwd=0.4194%  median_fwd=0.1467%  d_median_vs_base=0.0512%
+  MFE=1.3052%  MAE=1.1350%  future_vol=2.9027%
+  P(+0.5R)=76.694%  P(+1R)=59.086%  P(+2R)=34.900%
+  P(+1R before -1R)=48.183%  P(-1R before +1R)=45.928%  neither=5.889%  d_race=+5.767 pp
+  time_to_+0.5R=90.0 min  +1R=210.0 min  +2R=305.0 min
+  effect: directional difference versus baseline
+  horizons:
+   15m: n= 15215  med_fwd=   0.0020%  mean_fwd=   0.0101%  MFE=  0.1374%  MAE=  0.1352%  P(+1R before -1R)=  1.630%  P(-1R first)=  1.479%  neither= 96.891%
+   30m: n= 15215  med_fwd=   0.0051%  mean_fwd=   0.0202%  MFE=  0.2019%  MAE=  0.1985%  P(+1R before -1R)=  4.305%  P(-1R first)=  3.865%  neither= 91.830%
+    1h: n= 15215  med_fwd=   0.0089%  mean_fwd=   0.0427%  MFE=  0.2949%  MAE=  0.2872%  P(+1R before -1R)=  9.254%  P(-1R first)=  8.360%  neither= 82.386%
+    2h: n= 15215  med_fwd=   0.0285%  mean_fwd=   0.0915%  MFE=  0.4387%  MAE=  0.4135%  P(+1R before -1R)= 17.634%  P(-1R first)= 16.089%  neither= 66.277%
+    4h: n= 15215  med_fwd=   0.0547%  mean_fwd=   0.1822%  MFE=  0.6534%  MAE=  0.6089%  P(+1R before -1R)= 30.845%  P(-1R first)= 28.242%  neither= 40.914%
+   12h: n= 15215  med_fwd=   0.1467%  mean_fwd=   0.4194%  MFE=  1.3052%  MAE=  1.1350%  P(+1R before -1R)= 48.183%  P(-1R first)= 45.928%  neither=  5.889%
+
+Tuesday @12h
+  n=15120
+  mean_fwd=-0.0755%  median_fwd=-0.0221%  d_median_vs_base=-0.1176%
+  MFE=1.1037%  MAE=1.2765%  future_vol=2.7794%
+  P(+0.5R)=76.197%  P(+1R)=54.537%  P(+2R)=24.253%
+  P(+1R before -1R)=43.228%  P(-1R before +1R)=49.246%  neither=7.526%  d_race=+0.812 pp
+  time_to_+0.5R=100.0 min  +1R=225.0 min  +2R=355.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  horizons:
+   15m: n= 15261  med_fwd=   0.0000%  mean_fwd=  -0.0040%  MFE=  0.1403%  MAE=  0.1446%  P(+1R before -1R)=  1.035%  P(-1R first)=  1.881%  neither= 97.084%
+   30m: n= 15258  med_fwd=   0.0032%  mean_fwd=  -0.0085%  MFE=  0.2046%  MAE=  0.2115%  P(+1R before -1R)=  3.166%  P(-1R first)=  5.060%  neither= 91.775%
+    1h: n= 15252  med_fwd=  -0.0017%  mean_fwd=  -0.0173%  MFE=  0.2923%  MAE=  0.3066%  P(+1R before -1R)=  7.586%  P(-1R first)= 10.943%  neither= 81.471%
+    2h: n= 15240  med_fwd=  -0.0009%  mean_fwd=  -0.0375%  MFE=  0.4195%  MAE=  0.4620%  P(+1R before -1R)= 15.387%  P(-1R first)= 19.987%  neither= 64.626%
+    4h: n= 15216  med_fwd=  -0.0140%  mean_fwd=  -0.0649%  MFE=  0.6063%  MAE=  0.7031%  P(+1R before -1R)= 26.406%  P(-1R first)= 32.183%  neither= 41.410%
+   12h: n= 15120  med_fwd=  -0.0221%  mean_fwd=  -0.0755%  MFE=  1.1037%  MAE=  1.2765%  P(+1R before -1R)= 43.228%  P(-1R first)= 49.246%  neither=  7.526%
+
+Wednesday @12h
+  n=14976
+  mean_fwd=0.2374%  median_fwd=0.0961%  d_median_vs_base=0.0006%
+  MFE=1.1541%  MAE=1.1733%  future_vol=2.6862%
+  P(+0.5R)=75.568%  P(+1R)=55.869%  P(+2R)=28.472%
+  P(+1R before -1R)=45.373%  P(-1R before +1R)=46.968%  neither=7.659%  d_race=+2.957 pp
+  time_to_+0.5R=95.0 min  +1R=215.0 min  +2R=302.5 min
+  effect: small directional difference (below ~0.30R cost scale)
+  horizons:
+   15m: n= 14976  med_fwd=   0.0063%  mean_fwd=   0.0060%  MFE=  0.1385%  MAE=  0.1413%  P(+1R before -1R)=  1.516%  P(-1R first)=  1.756%  neither= 96.728%
+   30m: n= 14976  med_fwd=   0.0063%  mean_fwd=   0.0120%  MFE=  0.2016%  MAE=  0.2026%  P(+1R before -1R)=  3.900%  P(-1R first)=  4.060%  neither= 92.041%
+    1h: n= 14976  med_fwd=   0.0092%  mean_fwd=   0.0236%  MFE=  0.2958%  MAE=  0.2959%  P(+1R before -1R)=  8.847%  P(-1R first)=  8.941%  neither= 82.212%
+    2h: n= 14976  med_fwd=   0.0238%  mean_fwd=   0.0444%  MFE=  0.4247%  MAE=  0.4395%  P(+1R before -1R)= 16.934%  P(-1R first)= 16.960%  neither= 66.106%
+    4h: n= 14976  med_fwd=   0.0240%  mean_fwd=   0.0816%  MFE=  0.6103%  MAE=  0.6302%  P(+1R before -1R)= 28.259%  P(-1R first)= 28.519%  neither= 43.222%
+   12h: n= 14976  med_fwd=   0.0961%  mean_fwd=   0.2374%  MFE=  1.1541%  MAE=  1.1733%  P(+1R before -1R)= 45.373%  P(-1R first)= 46.968%  neither=  7.659%
+
+Thursday @12h
+  n=14976
+  mean_fwd=-0.0373%  median_fwd=0.0263%  d_median_vs_base=-0.0692%
+  MFE=1.1603%  MAE=1.1211%  future_vol=2.6914%
+  P(+0.5R)=80.362%  P(+1R)=57.412%  P(+2R)=25.668%
+  P(+1R before -1R)=48.204%  P(-1R before +1R)=42.455%  neither=9.342%  d_race=+5.788 pp
+  time_to_+0.5R=105.0 min  +1R=240.0 min  +2R=385.0 min
+  effect: directional difference versus baseline
+  horizons:
+   15m: n= 14976  med_fwd=   0.0045%  mean_fwd=   0.0003%  MFE=  0.1378%  MAE=  0.1386%  P(+1R before -1R)=  0.901%  P(-1R first)=  1.462%  neither= 97.636%
+   30m: n= 14976  med_fwd=   0.0091%  mean_fwd=   0.0010%  MFE=  0.2043%  MAE=  0.1989%  P(+1R before -1R)=  2.678%  P(-1R first)=  3.980%  neither= 93.343%
+    1h: n= 14976  med_fwd=   0.0154%  mean_fwd=   0.0014%  MFE=  0.2936%  MAE=  0.2853%  P(+1R before -1R)=  6.931%  P(-1R first)=  8.881%  neither= 84.188%
+    2h: n= 14976  med_fwd=   0.0317%  mean_fwd=   0.0024%  MFE=  0.4249%  MAE=  0.4107%  P(+1R before -1R)= 14.557%  P(-1R first)= 16.420%  neither= 69.024%
+    4h: n= 14976  med_fwd=   0.0530%  mean_fwd=  -0.0006%  MFE=  0.6281%  MAE=  0.5757%  P(+1R before -1R)= 27.190%  P(-1R first)= 27.624%  neither= 45.186%
+   12h: n= 14976  med_fwd=   0.0263%  mean_fwd=  -0.0373%  MFE=  1.1603%  MAE=  1.1211%  P(+1R before -1R)= 48.204%  P(-1R first)= 42.455%  neither=  9.342%
+
+Friday @12h
+  n=14976
+  mean_fwd=0.1825%  median_fwd=0.1933%  d_median_vs_base=0.0978%
+  MFE=1.1239%  MAE=0.9233%  future_vol=2.4487%
+  P(+0.5R)=76.442%  P(+1R)=54.400%  P(+2R)=25.067%
+  P(+1R before -1R)=44.732%  P(-1R before +1R)=39.029%  neither=16.239%  d_race=+2.316 pp
+  time_to_+0.5R=95.0 min  +1R=210.0 min  +2R=335.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  horizons:
+   15m: n= 14976  med_fwd=   0.0045%  mean_fwd=   0.0035%  MFE=  0.1341%  MAE=  0.1305%  P(+1R before -1R)=  1.128%  P(-1R first)=  1.683%  neither= 97.189%
+   30m: n= 14976  med_fwd=   0.0087%  mean_fwd=   0.0068%  MFE=  0.1985%  MAE=  0.1863%  P(+1R before -1R)=  3.365%  P(-1R first)=  4.207%  neither= 92.428%
+    1h: n= 14976  med_fwd=   0.0196%  mean_fwd=   0.0128%  MFE=  0.2834%  MAE=  0.2646%  P(+1R before -1R)=  8.166%  P(-1R first)=  8.961%  neither= 82.873%
+    2h: n= 14976  med_fwd=   0.0491%  mean_fwd=   0.0259%  MFE=  0.4244%  MAE=  0.3778%  P(+1R before -1R)= 16.533%  P(-1R first)= 16.580%  neither= 66.887%
+    4h: n= 14976  med_fwd=   0.0646%  mean_fwd=   0.0523%  MFE=  0.6240%  MAE=  0.5458%  P(+1R before -1R)= 27.965%  P(-1R first)= 25.781%  neither= 46.254%
+   12h: n= 14976  med_fwd=   0.1933%  mean_fwd=   0.1825%  MFE=  1.1239%  MAE=  0.9233%  P(+1R before -1R)= 44.732%  P(-1R first)= 39.029%  neither= 16.239%
+
+Saturday @12h
+  n=14976
+  mean_fwd=0.0855%  median_fwd=0.0853%  d_median_vs_base=-0.0102%
+  MFE=0.6028%  MAE=0.5015%  future_vol=1.3035%
+  P(+0.5R)=57.779%  P(+1R)=28.379%  P(+2R)=9.075%
+  P(+1R before -1R)=27.204%  P(-1R before +1R)=20.126%  neither=52.671%  d_race=-15.212 pp
+  time_to_+0.5R=210.0 min  +1R=335.0 min  +2R=455.0 min
+  effect: directional difference versus baseline
+  horizons:
+   15m: n= 14976  med_fwd=   0.0006%  mean_fwd=   0.0008%  MFE=  0.0733%  MAE=  0.0726%  P(+1R before -1R)=  0.361%  P(-1R first)=  0.280%  neither= 99.359%
+   30m: n= 14976  med_fwd=   0.0004%  mean_fwd=   0.0018%  MFE=  0.1074%  MAE=  0.1075%  P(+1R before -1R)=  0.835%  P(-1R first)=  0.848%  neither= 98.317%
+    1h: n= 14976  med_fwd=   0.0061%  mean_fwd=   0.0041%  MFE=  0.1572%  MAE=  0.1525%  P(+1R before -1R)=  1.970%  P(-1R first)=  1.930%  neither= 96.100%
+    2h: n= 14976  med_fwd=   0.0141%  mean_fwd=   0.0120%  MFE=  0.2297%  MAE=  0.2120%  P(+1R before -1R)=  4.474%  P(-1R first)=  4.167%  neither= 91.360%
+    4h: n= 14976  med_fwd=   0.0372%  mean_fwd=   0.0249%  MFE=  0.3349%  MAE=  0.2941%  P(+1R before -1R)=  9.582%  P(-1R first)=  8.106%  neither= 82.312%
+   12h: n= 14976  med_fwd=   0.0853%  mean_fwd=   0.0855%  MFE=  0.6028%  MAE=  0.5015%  P(+1R before -1R)= 27.204%  P(-1R first)= 20.126%  neither= 52.671%
+
+Sunday @12h
+  n=14976
+  mean_fwd=0.0758%  median_fwd=0.1351%  d_median_vs_base=0.0396%
+  MFE=0.9284%  MAE=0.7920%  future_vol=2.0270%
+  P(+0.5R)=71.788%  P(+1R)=46.688%  P(+2R)=18.189%
+  P(+1R before -1R)=39.890%  P(-1R before +1R)=37.841%  neither=22.269%  d_race=-2.526 pp
+  time_to_+0.5R=170.0 min  +1R=305.0 min  +2R=465.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  horizons:
+   15m: n= 14976  med_fwd=  -0.0000%  mean_fwd=   0.0019%  MFE=  0.0821%  MAE=  0.0831%  P(+1R before -1R)=  0.300%  P(-1R first)=  0.354%  neither= 99.346%
+   30m: n= 14976  med_fwd=  -0.0010%  mean_fwd=   0.0040%  MFE=  0.1215%  MAE=  0.1240%  P(+1R before -1R)=  1.195%  P(-1R first)=  1.229%  neither= 97.576%
+    1h: n= 14976  med_fwd=   0.0040%  mean_fwd=   0.0070%  MFE=  0.1814%  MAE=  0.1835%  P(+1R before -1R)=  3.539%  P(-1R first)=  3.880%  neither= 92.581%
+    2h: n= 14976  med_fwd=   0.0172%  mean_fwd=   0.0096%  MFE=  0.2747%  MAE=  0.2671%  P(+1R before -1R)=  8.166%  P(-1R first)=  9.328%  neither= 82.505%
+    4h: n= 14976  med_fwd=   0.0289%  mean_fwd=   0.0200%  MFE=  0.4237%  MAE=  0.3918%  P(+1R before -1R)= 17.829%  P(-1R first)= 18.423%  neither= 63.749%
+   12h: n= 14976  med_fwd=   0.1351%  mean_fwd=   0.0758%  MFE=  0.9284%  MAE=  0.7920%  P(+1R before -1R)= 39.890%  P(-1R first)= 37.841%  neither= 22.269%
+
+VERDICT: C
+JUDGMENT: Monday's raw race is +5.8pp vs ALL, which a mechanical rule marked
+A. Resolved P(+1R | either barrier) is 51.2% vs ALL 51.3%. Monday is a
+higher-activity weekday (MFE 1.31% vs 1.02%), not a better LONG coin.
+Saturday's collapsed race is weekend volatility compression. Isolated
+weekday winners in a 7-way split are not a strategy.

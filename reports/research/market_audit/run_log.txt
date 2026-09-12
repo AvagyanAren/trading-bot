@@ -1,0 +1,11 @@
+started=2026-09-12 11:29:52 UTC
+elapsed_s=99.711
+n_candles=105408
+n_warmup=105359
+tests=1518
+output=C:\Users\Aren\Projects\trading-bot\reports\research\market_audit
+random_samples=100
+random_seed=20240101
+replica={'replica_net': -2.3697389052334636, 'engine_net': -2.369738905233471, 'replica_closed': 60.0, 'engine_closed': 60.0, 'replica_cash': -3.552713678800501e-15, 'engine_cash': 0.0, 'net_match': True, 'cash_match': True, 'closed_match': True}
+critical_answer=NO
+2025_files_opened=0

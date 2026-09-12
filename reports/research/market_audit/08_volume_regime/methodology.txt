@@ -1,0 +1,1 @@
+volume / volume_ma20 at the event close (volume_ma20 includes the current bar, which is known at close). Four equal-count quantiles. No multiplier search. Trend split uses the same-trend baseline.

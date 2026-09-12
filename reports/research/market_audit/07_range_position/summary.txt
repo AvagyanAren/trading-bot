@@ -1,0 +1,75 @@
+# Investigation 07 - Position inside the prior range
+
+pos12 Q1 @12h
+  n=26306
+  mean_fwd=0.1386%  median_fwd=0.1307%  d_median_vs_base=0.0352%
+  MFE=1.0332%  MAE=0.9324%  future_vol=2.3756%
+  P(+0.5R)=74.211%  P(+1R)=51.224%  P(+2R)=23.018%
+  P(+1R before -1R)=42.458%  P(-1R before +1R)=39.763%  neither=17.779%  d_race=+0.042 pp
+  time_to_+0.5R=110.0 min  +1R=235.0 min  +2R=365.0 min
+  effect: indistinguishable from baseline
+pos12 Q2 @12h
+  n=26294
+  mean_fwd=0.1389%  median_fwd=0.1117%  d_median_vs_base=0.0162%
+  MFE=1.0210%  MAE=0.9554%  future_vol=2.3880%
+  P(+0.5R)=73.405%  P(+1R)=50.909%  P(+2R)=23.348%
+  P(+1R before -1R)=42.314%  P(-1R before +1R)=40.021%  neither=17.666%  d_race=-0.102 pp
+  time_to_+0.5R=120.0 min  +1R=245.0 min  +2R=360.0 min
+  effect: indistinguishable from baseline
+pos12 Q3 @12h
+  n=26297
+  mean_fwd=0.1401%  median_fwd=0.0771%  d_median_vs_base=-0.0184%
+  MFE=1.0171%  MAE=0.9504%  future_vol=2.4029%
+  P(+0.5R)=73.294%  P(+1R)=50.671%  P(+2R)=24.140%
+  P(+1R before -1R)=42.279%  P(-1R before +1R)=40.294%  neither=17.428%  d_race=-0.137 pp
+  time_to_+0.5R=120.0 min  +1R=240.0 min  +2R=350.0 min
+  effect: indistinguishable from baseline
+pos12 Q4 @12h
+  n=26318
+  mean_fwd=0.0914%  median_fwd=0.0604%  d_median_vs_base=-0.0351%
+  MFE=1.0246%  MAE=0.9864%  future_vol=2.4357%
+  P(+0.5R)=73.322%  P(+1R)=50.931%  P(+2R)=24.242%
+  P(+1R before -1R)=42.613%  P(-1R before +1R)=40.934%  neither=16.453%  d_race=+0.197 pp
+  time_to_+0.5R=115.0 min  +1R=235.0 min  +2R=347.5 min
+  effect: indistinguishable from baseline
+  pos12 race Q1..Q4=['42.458%', '42.314%', '42.279%', '42.613%']
+
+pos24 Q1 @12h
+  n=26304
+  mean_fwd=0.1265%  median_fwd=0.1276%  d_median_vs_base=0.0321%
+  MFE=1.0102%  MAE=0.9478%  future_vol=2.3813%
+  P(+0.5R)=73.597%  P(+1R)=50.403%  P(+2R)=22.540%
+  P(+1R before -1R)=41.735%  P(-1R before +1R)=40.401%  neither=17.864%  d_race=-0.681 pp
+  time_to_+0.5R=110.0 min  +1R=235.0 min  +2R=360.0 min
+  effect: indistinguishable from baseline
+pos24 Q2 @12h
+  n=26290
+  mean_fwd=0.1355%  median_fwd=0.1000%  d_median_vs_base=0.0045%
+  MFE=0.9986%  MAE=0.9365%  future_vol=2.3608%
+  P(+0.5R)=73.009%  P(+1R)=49.924%  P(+2R)=23.115%
+  P(+1R before -1R)=41.358%  P(-1R before +1R)=40.342%  neither=18.300%  d_race=-1.058 pp
+  time_to_+0.5R=125.0 min  +1R=250.0 min  +2R=370.0 min
+  effect: small mixed difference
+pos24 Q3 @12h
+  n=26304
+  mean_fwd=0.1507%  median_fwd=0.1007%  d_median_vs_base=0.0053%
+  MFE=1.0476%  MAE=0.9505%  future_vol=2.4018%
+  P(+0.5R)=74.046%  P(+1R)=51.878%  P(+2R)=24.205%
+  P(+1R before -1R)=43.077%  P(-1R before +1R)=39.944%  neither=16.978%  d_race=+0.661 pp
+  time_to_+0.5R=125.0 min  +1R=245.0 min  +2R=355.0 min
+  effect: indistinguishable from baseline
+pos24 Q4 @12h
+  n=26317
+  mean_fwd=0.0963%  median_fwd=0.0546%  d_median_vs_base=-0.0409%
+  MFE=1.0376%  MAE=0.9854%  future_vol=2.4550%
+  P(+0.5R)=73.580%  P(+1R)=51.529%  P(+2R)=24.885%
+  P(+1R before -1R)=43.493%  P(-1R before +1R)=40.324%  neither=16.183%  d_race=+1.077 pp
+  time_to_+0.5R=110.0 min  +1R=225.0 min  +2R=345.0 min
+  effect: small mixed difference
+  pos24 race Q1..Q4=['41.735%', '41.358%', '43.077%', '43.493%']
+
+VERDICT: C
+JUDGMENT: pos12 race Q1..Q4 is 42.46%, 42.31%, 42.28%, 42.61% — flat. Median
+12h return is slightly higher near the bottom of the prior range, still far
+below cost. Range location does not add directional information beyond
+previous pullback work.

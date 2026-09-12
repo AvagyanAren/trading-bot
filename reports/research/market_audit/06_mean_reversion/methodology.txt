@@ -1,0 +1,1 @@
+Q1 of the prior k-bar return is the most negative quartile (largest short-term decline). Recovery time is bars until close returns to close[t-k], looking only forward inside 2024. Trend split uses the same-trend baseline, not the mixed population. This is descriptive; no mean-reversion strategy is constructed.

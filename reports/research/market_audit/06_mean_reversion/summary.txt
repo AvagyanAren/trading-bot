@@ -1,0 +1,228 @@
+# Investigation 06 - Mean-reversion strength after declines
+
+MOST NEGATIVE ret3 Q1 @12h
+  n=26291
+  mean_fwd=0.1605%  median_fwd=0.1427%  d_median_vs_base=0.0472%
+  MFE=1.1413%  MAE=1.0781%  future_vol=2.6668%
+  P(+0.5R)=76.817%  P(+1R)=55.479%  P(+2R)=26.773%
+  P(+1R before -1R)=44.582%  P(-1R before +1R)=43.448%  neither=11.970%  d_race=+2.166 pp
+  time_to_+0.5R=90.0 min  +1R=210.0 min  +2R=330.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=10.0  P(recover to pre-move close within 12h)=83.530%
+  time_to_+1R=210.0 min among those who reach +1R
+ret3 Q1 ∩ bull @12h
+  n=12781
+  mean_fwd=0.1266%  median_fwd=0.0820%  d_median_vs_base=0.0149%
+  MFE=1.1197%  MAE=1.0430%  future_vol=2.6443%
+  P(+0.5R)=74.493%  P(+1R)=54.503%  P(+2R)=26.688%
+  P(+1R before -1R)=45.083%  P(-1R before +1R)=42.767%  neither=12.151%  d_race=+1.280 pp
+  time_to_+0.5R=100.0 min  +1R=210.0 min  +2R=325.0 min
+  effect: small mixed difference
+ret3 Q1 ∩ bear @12h
+  n=13510
+  mean_fwd=0.1925%  median_fwd=0.2001%  d_median_vs_base=0.0765%
+  MFE=1.1620%  MAE=1.1092%  future_vol=2.6869%
+  P(+0.5R)=79.016%  P(+1R)=56.403%  P(+2R)=26.854%
+  P(+1R before -1R)=44.108%  P(-1R before +1R)=44.093%  neither=11.799%  d_race=+3.269 pp
+  time_to_+0.5R=80.0 min  +1R=205.0 min  +2R=340.0 min
+  effect: directional difference versus baseline
+ret3 Q2 @12h
+  n=26312
+  mean_fwd=0.1118%  median_fwd=0.0906%  d_median_vs_base=-0.0048%
+  MFE=0.9161%  MAE=0.8235%  future_vol=2.1446%
+  P(+0.5R)=70.987%  P(+1R)=46.640%  P(+2R)=19.972%
+  P(+1R before -1R)=40.187%  P(-1R before +1R)=36.789%  neither=23.024%  d_race=-2.229 pp
+  time_to_+0.5R=145.0 min  +1R=280.0 min  +2R=400.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=3.0  P(recover to pre-move close within 12h)=93.881%
+ret3 Q3 @12h
+  n=26315
+  mean_fwd=0.0880%  median_fwd=0.0668%  d_median_vs_base=-0.0287%
+  MFE=0.9130%  MAE=0.8405%  future_vol=2.1696%
+  P(+0.5R)=70.295%  P(+1R)=46.563%  P(+2R)=20.300%
+  P(+1R before -1R)=39.821%  P(-1R before +1R)=37.481%  neither=22.698%  d_race=-2.595 pp
+  time_to_+0.5R=145.0 min  +1R=275.0 min  +2R=390.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=98.096%
+ret3 Q4 @12h
+  n=26297
+  mean_fwd=0.1487%  median_fwd=0.0973%  d_median_vs_base=0.0018%
+  MFE=1.1409%  MAE=1.0874%  future_vol=2.6657%
+  P(+0.5R)=76.138%  P(+1R)=55.060%  P(+2R)=27.707%
+  P(+1R before -1R)=45.077%  P(-1R before +1R)=43.298%  neither=11.625%  d_race=+2.661 pp
+  time_to_+0.5R=95.0 min  +1R=205.0 min  +2R=320.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=99.509%
+
+MOST NEGATIVE ret6 Q1 @12h
+  n=26288
+  mean_fwd=0.1590%  median_fwd=0.1563%  d_median_vs_base=0.0608%
+  MFE=1.1417%  MAE=1.0851%  future_vol=2.6694%
+  P(+0.5R)=77.050%  P(+1R)=55.501%  P(+2R)=26.700%
+  P(+1R before -1R)=44.427%  P(-1R before +1R)=43.632%  neither=11.941%  d_race=+2.011 pp
+  time_to_+0.5R=90.0 min  +1R=210.0 min  +2R=340.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=14.0  P(recover to pre-move close within 12h)=78.572%
+  time_to_+1R=210.0 min among those who reach +1R
+ret6 Q1 ∩ bull @12h
+  n=11370
+  mean_fwd=0.1178%  median_fwd=0.0840%  d_median_vs_base=0.0169%
+  MFE=1.1057%  MAE=1.0513%  future_vol=2.6177%
+  P(+0.5R)=74.318%  P(+1R)=54.204%  P(+2R)=26.227%
+  P(+1R before -1R)=44.538%  P(-1R before +1R)=43.017%  neither=12.445%  d_race=+0.735 pp
+  time_to_+0.5R=105.0 min  +1R=215.0 min  +2R=340.0 min
+  effect: indistinguishable from baseline
+ret6 Q1 ∩ bear @12h
+  n=14918
+  mean_fwd=0.1903%  median_fwd=0.2103%  d_median_vs_base=0.0867%
+  MFE=1.1655%  MAE=1.1092%  future_vol=2.7115%
+  P(+0.5R)=79.133%  P(+1R)=56.489%  P(+2R)=27.061%
+  P(+1R before -1R)=44.342%  P(-1R before +1R)=44.101%  neither=11.557%  d_race=+3.503 pp
+  time_to_+0.5R=80.0 min  +1R=205.0 min  +2R=340.0 min
+  effect: directional difference versus baseline
+ret6 Q2 @12h
+  n=26310
+  mean_fwd=0.1168%  median_fwd=0.0880%  d_median_vs_base=-0.0074%
+  MFE=0.9153%  MAE=0.8221%  future_vol=2.1395%
+  P(+0.5R)=70.817%  P(+1R)=46.746%  P(+2R)=19.761%
+  P(+1R before -1R)=40.289%  P(-1R before +1R)=36.526%  neither=23.185%  d_race=-2.127 pp
+  time_to_+0.5R=145.0 min  +1R=280.0 min  +2R=400.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=4.0  P(recover to pre-move close within 12h)=92.691%
+ret6 Q3 @12h
+  n=26312
+  mean_fwd=0.0965%  median_fwd=0.0677%  d_median_vs_base=-0.0278%
+  MFE=0.9189%  MAE=0.8426%  future_vol=2.1788%
+  P(+0.5R)=70.371%  P(+1R)=46.758%  P(+2R)=20.299%
+  P(+1R before -1R)=40.107%  P(-1R before +1R)=37.321%  neither=22.571%  d_race=-2.309 pp
+  time_to_+0.5R=145.0 min  +1R=275.0 min  +2R=390.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=98.601%
+ret6 Q4 @12h
+  n=26305
+  mean_fwd=0.1367%  median_fwd=0.0854%  d_median_vs_base=-0.0101%
+  MFE=1.1330%  MAE=1.0851%  future_vol=2.6548%
+  P(+0.5R)=75.997%  P(+1R)=54.735%  P(+2R)=27.991%
+  P(+1R before -1R)=44.843%  P(-1R before +1R)=43.535%  neither=11.621%  d_race=+2.427 pp
+  time_to_+0.5R=95.0 min  +1R=205.0 min  +2R=315.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=99.772%
+
+MOST NEGATIVE ret12 Q1 @12h
+  n=26285
+  mean_fwd=0.1591%  median_fwd=0.1626%  d_median_vs_base=0.0671%
+  MFE=1.1372%  MAE=1.0937%  future_vol=2.6759%
+  P(+0.5R)=77.189%  P(+1R)=55.572%  P(+2R)=26.764%
+  P(+1R before -1R)=44.626%  P(-1R before +1R)=43.641%  neither=11.733%  d_race=+2.210 pp
+  time_to_+0.5R=90.0 min  +1R=210.0 min  +2R=340.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=21.0  P(recover to pre-move close within 12h)=71.695%
+  time_to_+1R=210.0 min among those who reach +1R
+ret12 Q1 ∩ bull @12h
+  n=8465
+  mean_fwd=0.1345%  median_fwd=0.1087%  d_median_vs_base=0.0416%
+  MFE=1.1072%  MAE=1.0392%  future_vol=2.6189%
+  P(+0.5R)=73.987%  P(+1R)=54.200%  P(+2R)=26.545%
+  P(+1R before -1R)=45.009%  P(-1R before +1R)=42.646%  neither=12.345%  d_race=+1.206 pp
+  time_to_+0.5R=100.0 min  +1R=215.0 min  +2R=335.0 min
+  effect: small mixed difference
+ret12 Q1 ∩ bear @12h
+  n=17820
+  mean_fwd=0.1708%  median_fwd=0.1866%  d_median_vs_base=0.0629%
+  MFE=1.1518%  MAE=1.1140%  future_vol=2.7001%
+  P(+0.5R)=78.709%  P(+1R)=56.223%  P(+2R)=26.869%
+  P(+1R before -1R)=44.444%  P(-1R before +1R)=44.113%  neither=11.442%  d_race=+3.605 pp
+  time_to_+0.5R=85.0 min  +1R=210.0 min  +2R=345.0 min
+  effect: directional difference versus baseline
+ret12 Q2 @12h
+  n=26313
+  mean_fwd=0.1203%  median_fwd=0.0951%  d_median_vs_base=-0.0004%
+  MFE=0.9066%  MAE=0.8174%  future_vol=2.1351%
+  P(+0.5R)=70.592%  P(+1R)=46.373%  P(+2R)=19.557%
+  P(+1R before -1R)=39.821%  P(-1R before +1R)=36.773%  neither=23.407%  d_race=-2.595 pp
+  time_to_+0.5R=145.0 min  +1R=275.0 min  +2R=390.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=5.0  P(recover to pre-move close within 12h)=90.883%
+ret12 Q3 @12h
+  n=26313
+  mean_fwd=0.1118%  median_fwd=0.0621%  d_median_vs_base=-0.0334%
+  MFE=0.9198%  MAE=0.8356%  future_vol=2.1681%
+  P(+0.5R)=70.448%  P(+1R)=46.802%  P(+2R)=20.370%
+  P(+1R before -1R)=40.193%  P(-1R before +1R)=37.016%  neither=22.791%  d_race=-2.223 pp
+  time_to_+0.5R=145.0 min  +1R=275.0 min  +2R=385.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=98.993%
+ret12 Q4 @12h
+  n=26304
+  mean_fwd=0.1178%  median_fwd=0.0749%  d_median_vs_base=-0.0206%
+  MFE=1.1360%  MAE=1.0969%  future_vol=2.6639%
+  P(+0.5R)=76.007%  P(+1R)=54.995%  P(+2R)=28.060%
+  P(+1R before -1R)=45.027%  P(-1R before +1R)=43.587%  neither=11.386%  d_race=+2.611 pp
+  time_to_+0.5R=95.0 min  +1R=210.0 min  +2R=325.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=99.913%
+
+MOST NEGATIVE ret24 Q1 @12h
+  n=26282
+  mean_fwd=0.1698%  median_fwd=0.1697%  d_median_vs_base=0.0743%
+  MFE=1.1342%  MAE=1.1022%  future_vol=2.6975%
+  P(+0.5R)=77.262%  P(+1R)=55.209%  P(+2R)=26.885%
+  P(+1R before -1R)=43.969%  P(-1R before +1R)=44.529%  neither=11.502%  d_race=+1.553 pp
+  time_to_+0.5R=90.0 min  +1R=215.0 min  +2R=340.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  time_to_recovery_median_bars=32.0  P(recover to pre-move close within 12h)=61.944%
+  time_to_+1R=215.0 min among those who reach +1R
+ret24 Q1 ∩ bull @12h
+  n=4187
+  mean_fwd=0.2038%  median_fwd=0.1516%  d_median_vs_base=0.0845%
+  MFE=1.1125%  MAE=1.0037%  future_vol=2.5990%
+  P(+0.5R)=75.209%  P(+1R)=53.929%  P(+2R)=25.985%
+  P(+1R before -1R)=44.590%  P(-1R before +1R)=42.321%  neither=13.088%  d_race=+0.787 pp
+  time_to_+0.5R=100.0 min  +1R=210.0 min  +2R=315.0 min
+  effect: small mixed difference
+ret24 Q1 ∩ bear @12h
+  n=22095
+  mean_fwd=0.1634%  median_fwd=0.1730%  d_median_vs_base=0.0494%
+  MFE=1.1380%  MAE=1.1156%  future_vol=2.7105%
+  P(+0.5R)=77.651%  P(+1R)=55.451%  P(+2R)=27.056%
+  P(+1R before -1R)=43.852%  P(-1R before +1R)=44.947%  neither=11.202%  d_race=+3.012 pp
+  time_to_+0.5R=90.0 min  +1R=220.0 min  +2R=345.0 min
+  effect: directional difference versus baseline
+ret24 Q2 @12h
+  n=26310
+  mean_fwd=0.0992%  median_fwd=0.0877%  d_median_vs_base=-0.0078%
+  MFE=0.8849%  MAE=0.8183%  future_vol=2.0962%
+  P(+0.5R)=70.091%  P(+1R)=45.306%  P(+2R)=18.354%
+  P(+1R before -1R)=38.582%  P(-1R before +1R)=36.880%  neither=24.538%  d_race=-3.834 pp
+  time_to_+0.5R=150.0 min  +1R=280.0 min  +2R=405.0 min
+  effect: directional difference versus baseline
+  time_to_recovery_median_bars=6.0  P(recover to pre-move close within 12h)=89.145%
+ret24 Q3 @12h
+  n=26323
+  mean_fwd=0.1203%  median_fwd=0.0729%  d_median_vs_base=-0.0226%
+  MFE=0.9402%  MAE=0.8210%  future_vol=2.1688%
+  P(+0.5R)=70.759%  P(+1R)=47.616%  P(+2R)=21.069%
+  P(+1R before -1R)=41.052%  P(-1R before +1R)=36.573%  neither=22.376%  d_race=-1.364 pp
+  time_to_+0.5R=140.0 min  +1R=270.0 min  +2R=385.0 min
+  effect: small mixed difference
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=99.312%
+ret24 Q4 @12h
+  n=26300
+  mean_fwd=0.1196%  median_fwd=0.0639%  d_median_vs_base=-0.0316%
+  MFE=1.1480%  MAE=1.0904%  future_vol=2.6718%
+  P(+0.5R)=76.125%  P(+1R)=55.612%  P(+2R)=28.445%
+  P(+1R before -1R)=46.065%  P(-1R before +1R)=43.038%  neither=10.897%  d_race=+3.649 pp
+  time_to_+0.5R=90.0 min  +1R=205.0 min  +2R=325.0 min
+  effect: directional difference versus baseline
+  time_to_recovery_median_bars=1.0  P(recover to pre-move close within 12h)=99.973%
+
+ret3 Q1 recovery_bars=10.0 hit=83.530%
+ret6 Q1 recovery_bars=14.0 hit=78.572%
+ret12 Q1 recovery_bars=21.0 hit=71.695%
+ret24 Q1 recovery_bars=32.0 hit=61.944%
+VERDICT: B
+JUDGMENT: After the most negative prior-return quartile, 12h median forward
+return is about +0.05% to +0.08% vs baseline, a bit more inside EMA20<=EMA50,
+with short recovery times to the pre-move close. The 1R resolved coin stays
+~50%. This is a real but economically insufficient bounce, and Q4 extremes
+also expand, so the curve is not a clean "buy dips" monotone.

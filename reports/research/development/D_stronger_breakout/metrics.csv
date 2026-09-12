@@ -1,0 +1,53 @@
+metric,value
+starting_capital,20.0
+ending_cash,6.275761467912928
+ending_realized_equity,6.275761467912403
+ending_mtm_equity,6.275761467912397
+total_net_pnl,-13.72423853208759
+total_gross_pnl,-0.09498284106280433
+total_fees,9.08617047651399
+total_slippage,4.543085214510796
+signals,844
+filled_trades,354
+closed_trades,354
+open_end_of_data,0
+ignored_signals,490
+ignored_position_open,490
+ignored_no_next_candle,0
+ignored_insufficient_cash,0
+tp_count,110
+sl_count,244
+win_count,110
+loss_count,244
+scratch_count,0
+win_rate,0.3107344632768362
+loss_rate,0.6892655367231638
+average_winning_trade,0.22810923835459904
+average_losing_trade,-0.1590830112749733
+median_winning_trade,0.23845069379347927
+median_losing_trade,-0.15575290817474197
+profit_factor,0.6464306353074684
+average_net_pnl_per_closed_trade,-0.03876903540137737
+average_R_per_closed_trade,-0.31764494915253655
+expectancy_per_trade,-0.03876903540137737
+expectancy_R,-0.31764494915253655
+median_R,-1.2484504999999915
+total_R,-112.44631199999795
+average_holding_time,0 days 10:26:42.542372881
+median_holding_time,0 days 05:55:00
+max_holding_time,2 days 19:25:00
+average_holding_candles,125.34180790666667
+median_holding_candles,71.0
+max_holding_candles,809.0
+max_consecutive_wins,4
+max_consecutive_losses,13
+max_drawdown,14.221029032271566
+max_drawdown_pct,0.6982490619897912
+max_drawdown_peak_timestamp,2024-01-02 09:00:00+00:00
+max_drawdown_trough_timestamp,2024-12-31 06:35:00+00:00
+largest_win_net_pnl,0.3490611388611397
+sum_of_winning_net_pnl,25.092016219005895
+months_with_closed_trades,12
+max_month_share_of_net,n/a
+open_entry_fees,0.0
+unresolved_reserved,0.0

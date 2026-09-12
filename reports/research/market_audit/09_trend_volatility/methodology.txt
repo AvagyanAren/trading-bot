@@ -1,0 +1,1 @@
+Fixed 2x4: EMA20>EMA50 vs EMA20<=EMA50 crossed with range12 quartiles. No cell is dropped or retuned. Baseline for each cell is the same-trend population to avoid confounding trend prevalence with volatility.

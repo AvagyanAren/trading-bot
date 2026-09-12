@@ -1,0 +1,1 @@
+Regimes use EMA20 and EMA50 already on the enriched candle (known at close). A: EMA20>EMA50. B: EMA20<=EMA50. Spread=(EMA20-EMA50)/close split into four equal-count quantiles. No spread threshold search. Separate directional race from MFE/MAE expansion.

@@ -1,0 +1,32 @@
+# Investigation 10 - Short-term autocorrelation
+
+Unconditional P(r>0)=50.209%  E[r]=0.0009%
+Looking for economically meaningful dependence, not tiny-n significance.
+
+## 1-bar close return
+  lag  1 bars (5m): corr=-0.01340  E[r|prev+]=0.0014%  E[r|prev-]=0.0004%  P(+|+ )=49.705%  P(+|- )=50.760%  uncond P(+)=50.209%
+  lag  2 bars (10m): corr=-0.01797  E[r|prev+]=-0.0016%  E[r|prev-]=0.0034%  P(+|+ )=48.584%  P(+|- )=51.844%  uncond P(+)=50.208%
+  lag  3 bars (15m): corr=+0.01031  E[r|prev+]=0.0011%  E[r|prev-]=0.0006%  P(+|+ )=49.730%  P(+|- )=50.695%  uncond P(+)=50.209%
+  lag  6 bars (30m): corr=+0.00901  E[r|prev+]=0.0020%  E[r|prev-]=-0.0003%  P(+|+ )=50.196%  P(+|- )=50.239%  uncond P(+)=50.209%
+  lag 12 bars (60m): corr=-0.00134  E[r|prev+]=0.0010%  E[r|prev-]=0.0007%  P(+|+ )=49.958%  P(+|- )=50.470%  uncond P(+)=50.209%
+
+## 3-bar return
+  lag  1 bars (5m): corr=+0.65994  E[r|prev+]=0.1242%  E[r|prev-]=-0.1213%  P(+|+ )=73.035%  P(+|- )=27.420%  uncond P(+)=50.453%
+  lag  3 bars (15m): corr=-0.01108  E[r|prev+]=0.0012%  E[r|prev-]=0.0041%  P(+|+ )=48.643%  P(+|- )=52.295%  uncond P(+)=50.454%
+  lag  6 bars (30m): corr=+0.00552  E[r|prev+]=0.0039%  E[r|prev-]=0.0014%  P(+|+ )=49.785%  P(+|- )=51.146%  uncond P(+)=50.454%
+  lag 12 bars (60m): corr=-0.00868  E[r|prev+]=0.0004%  E[r|prev-]=0.0049%  P(+|+ )=49.675%  P(+|- )=51.258%  uncond P(+)=50.453%
+
+## 6-bar return
+  lag  1 bars (5m): corr=+0.82790  E[r|prev+]=0.2155%  E[r|prev-]=-0.2105%  P(+|+ )=81.008%  P(+|- )=19.473%  uncond P(+)=50.644%
+  lag  6 bars (30m): corr=-0.00240  E[r|prev+]=0.0049%  E[r|prev-]=0.0057%  P(+|+ )=49.029%  P(+|- )=52.301%  uncond P(+)=50.644%
+  lag 12 bars (60m): corr=-0.01281  E[r|prev+]=0.0012%  E[r|prev-]=0.0095%  P(+|+ )=49.077%  P(+|- )=52.257%  uncond P(+)=50.642%
+
+## 12-bar return
+  lag  1 bars (5m): corr=+0.91285  E[r|prev+]=0.3330%  E[r|prev-]=-0.3257%  P(+|+ )=86.259%  P(+|- )=14.308%  uncond P(+)=51.041%
+  lag 12 bars (60m): corr=-0.01903  E[r|prev+]=0.0033%  E[r|prev-]=0.0181%  P(+|+ )=48.476%  P(+|- )=53.700%  uncond P(+)=51.037%
+
+VERDICT: C
+JUDGMENT: Lag-1 correlations of 3/6/12-bar returns (0.66, 0.83, 0.91) are
+overlapping-window artifacts. Non-overlapping lags are about -0.01 to -0.02
+with a slightly negative sign. 1-bar lag-1 corr is -0.013. No economically
+meaningful short-term continuation.

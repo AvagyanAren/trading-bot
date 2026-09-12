@@ -1,0 +1,1 @@
+Historical close-to-close returns over 3/6/12/24 bars ending at t. Quartiles are equal-count. Positive vs negative historical return is a second split. No lookback was selected as 'best'. Continuation would require higher prior return quartiles to show higher P(+1R before -1R) and/or higher median forward return after separating volatility.

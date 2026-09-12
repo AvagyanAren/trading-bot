@@ -1,0 +1,81 @@
+# Investigation 09 - Trend x volatility (2 x 4)
+
+bull_range12_Q1 @12h vs same-trend
+  n=14934
+  mean_fwd=0.1211%  median_fwd=0.0660%  d_median_vs_base=-0.0011%
+  MFE=0.8098%  MAE=0.6251%  future_vol=1.8043%
+  P(+0.5R)=65.943%  P(+1R)=42.346%  P(+2R)=17.068%
+  P(+1R before -1R)=38.483%  P(-1R before +1R)=28.773%  neither=32.744%  d_race=-5.320 pp
+  time_to_+0.5R=190.0 min  +1R=315.0 min  +2R=410.0 min
+  effect: directional difference versus baseline
+  vs ALL: race 38.483% vs 42.416%
+bull_range12_Q2 @12h vs same-trend
+  n=14498
+  mean_fwd=0.0812%  median_fwd=0.0507%  d_median_vs_base=-0.0164%
+  MFE=1.0452%  MAE=0.9508%  future_vol=2.4475%
+  P(+0.5R)=73.658%  P(+1R)=51.731%  P(+2R)=24.355%
+  P(+1R before -1R)=44.599%  P(-1R before +1R)=40.688%  neither=14.712%  d_race=+0.796 pp
+  time_to_+0.5R=135.0 min  +1R=260.0 min  +2R=385.0 min
+  effect: indistinguishable from baseline
+  vs ALL: race 44.599% vs 42.416%
+bull_range12_Q3 @12h vs same-trend
+  n=14091
+  mean_fwd=0.1137%  median_fwd=0.0709%  d_median_vs_base=0.0038%
+  MFE=1.1009%  MAE=1.0464%  future_vol=2.5723%
+  P(+0.5R)=75.098%  P(+1R)=54.084%  P(+2R)=26.911%
+  P(+1R before -1R)=45.369%  P(-1R before +1R)=43.205%  neither=11.426%  d_race=+1.566 pp
+  time_to_+0.5R=105.0 min  +1R=220.0 min  +2R=350.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  vs ALL: race 45.369% vs 42.416%
+bull_range12_Q4 @12h vs same-trend
+  n=12455
+  mean_fwd=0.1710%  median_fwd=0.0793%  d_median_vs_base=0.0121%
+  MFE=1.2932%  MAE=1.2105%  future_vol=3.0285%
+  P(+0.5R)=78.547%  P(+1R)=59.615%  P(+2R)=32.164%
+  P(+1R before -1R)=47.483%  P(-1R before +1R)=45.171%  neither=7.346%  d_race=+3.680 pp
+  time_to_+0.5R=60.0 min  +1R=150.0 min  +2R=260.0 min
+  effect: directional difference versus baseline
+  vs ALL: race 47.483% vs 42.416%
+
+bear_range12_Q1 @12h vs same-trend
+  n=11403
+  mean_fwd=0.0844%  median_fwd=0.0553%  d_median_vs_base=-0.0683%
+  MFE=0.6810%  MAE=0.6658%  future_vol=1.6928%
+  P(+0.5R)=62.606%  P(+1R)=34.973%  P(+2R)=11.357%
+  P(+1R before -1R)=31.264%  P(-1R before +1R)=32.272%  neither=36.464%  d_race=-9.576 pp
+  time_to_+0.5R=205.0 min  +1R=375.0 min  +2R=520.0 min
+  effect: directional difference versus baseline
+  vs ALL: race 31.264% vs 42.416%
+bear_range12_Q2 @12h vs same-trend
+  n=11797
+  mean_fwd=0.0652%  median_fwd=0.0905%  d_median_vs_base=-0.0331%
+  MFE=0.9374%  MAE=0.9255%  future_vol=2.1748%
+  P(+0.5R)=73.129%  P(+1R)=47.224%  P(+2R)=18.454%
+  P(+1R before -1R)=40.663%  P(-1R before +1R)=40.400%  neither=18.937%  d_race=-0.176 pp
+  time_to_+0.5R=150.0 min  +1R=290.0 min  +2R=425.0 min
+  effect: indistinguishable from baseline
+  vs ALL: race 40.663% vs 42.416%
+bear_range12_Q3 @12h vs same-trend
+  n=12206
+  mean_fwd=0.1255%  median_fwd=0.1331%  d_median_vs_base=0.0095%
+  MFE=1.0920%  MAE=1.0523%  future_vol=2.5099%
+  P(+0.5R)=77.290%  P(+1R)=53.867%  P(+2R)=23.914%
+  P(+1R before -1R)=44.798%  P(-1R before +1R)=43.274%  neither=11.929%  d_race=+3.958 pp
+  time_to_+0.5R=105.0 min  +1R=250.0 min  +2R=395.0 min
+  effect: directional difference versus baseline
+  vs ALL: race 44.798% vs 42.416%
+bear_range12_Q4 @12h vs same-trend
+  n=13831
+  mean_fwd=0.2462%  median_fwd=0.2811%  d_median_vs_base=0.1575%
+  MFE=1.3634%  MAE=1.3099%  future_vol=3.0941%
+  P(+0.5R)=81.715%  P(+1R)=62.078%  P(+2R)=33.642%
+  P(+1R before -1R)=45.391%  P(-1R before +1R)=48.543%  neither=6.066%  d_race=+4.552 pp
+  time_to_+0.5R=55.0 min  +1R=160.0 min  +2R=285.0 min
+  effect: directional difference versus baseline
+  vs ALL: race 45.391% vs 42.416%
+
+VERDICT: C
+JUDGMENT: High range inside a downtrend has the largest 12h median bounce
+(0.28%) and also the largest MFE and MAE. Low range inside a downtrend
+rarely hits 1% (raw race 31%). The matrix is an expansion x bounce picture,
+not a directional LONG cell that pays 0.30R.

@@ -1,0 +1,1 @@
+range12 = (max high - min low of the previous 12 completed candles) / close. Current candle is excluded. Equal-count quartiles, not searched thresholds. Future volatility = (max high - min low) / entry over the forward window. 24-bar range is a secondary descriptive split. Realized absolute returns over the same lookback are computed as a companion feature (realized12/24).

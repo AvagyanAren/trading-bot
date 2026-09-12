@@ -1,0 +1,39 @@
+series,kind,label,value
+R,quantile,min,-1.2484505000000143
+R,quantile,p10,-1.2484505000000024
+R,quantile,p25,-1.2484504999999972
+R,quantile,p50,-1.2484504999999915
+R,quantile,p75,1.747051000000003
+R,quantile,p90,1.747051000000011
+R,quantile,max,1.7470510000000241
+R,histogram,"(-inf, -2.0]",0.0
+R,histogram,"(-2.0, -1.0]",244.0
+R,histogram,"(-1.0, 0.0]",0.0
+R,histogram,"(0.0, 1.0]",0.0
+R,histogram,"(1.0, 2.0]",110.0
+R,histogram,"(2.0, inf]",0.0
+net_pnl,quantile,min,-0.2537941613720443
+net_pnl,quantile,p10,-0.23249112176898942
+net_pnl,quantile,p25,-0.1811073547061352
+net_pnl,quantile,p50,-0.1070553328544704
+net_pnl,quantile,p75,0.13328371478545153
+net_pnl,quantile,p90,0.2791058894600332
+net_pnl,quantile,max,0.3490611388611397
+net_pnl,histogram,"(-inf, -0.5]",0.0
+net_pnl,histogram,"(-0.5, -0.2]",71.0
+net_pnl,histogram,"(-0.2, 0.0]",173.0
+net_pnl,histogram,"(0.0, 0.2]",42.0
+net_pnl,histogram,"(0.2, 0.5]",68.0
+net_pnl,histogram,"(0.5, inf]",0.0
+holding_time_minutes,quantile,min,0.0
+holding_time_minutes,quantile,p10,46.50000000000002
+holding_time_minutes,quantile,p25,120.0
+holding_time_minutes,quantile,p50,355.0
+holding_time_minutes,quantile,p75,745.0
+holding_time_minutes,quantile,p90,1538.5
+holding_time_minutes,quantile,max,4045.0
+holding_time_minutes,histogram,"(0.0, 15.0]",10.0
+holding_time_minutes,histogram,"(15.0, 60.0]",34.0
+holding_time_minutes,histogram,"(60.0, 240.0]",91.0
+holding_time_minutes,histogram,"(240.0, 1440.0]",177.0
+holding_time_minutes,histogram,"(1440.0, inf]",42.0

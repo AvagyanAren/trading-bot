@@ -1,0 +1,45 @@
+# Investigation 04 - Volatility regime (prior 12-bar normalized range)
+
+range12 Q1 @12h
+  n=26337
+  mean_fwd=0.1052%  median_fwd=0.0603%  d_median_vs_base=-0.0352%
+  MFE=0.7474%  MAE=0.6394%  future_vol=1.7524%
+  P(+0.5R)=64.499%  P(+1R)=39.154%  P(+2R)=14.595%
+  P(+1R before -1R)=35.357%  P(-1R before +1R)=30.288%  neither=34.355%  d_race=-7.059 pp
+  time_to_+0.5R=195.0 min  +1R=335.0 min  +2R=445.0 min
+  effect: directional difference versus baseline
+  also 24-bar range median=0.4518%
+range12 Q2 @12h
+  n=26295
+  mean_fwd=0.0740%  median_fwd=0.0727%  d_median_vs_base=-0.0228%
+  MFE=0.9922%  MAE=0.9381%  future_vol=2.3110%
+  P(+0.5R)=73.421%  P(+1R)=49.709%  P(+2R)=21.708%
+  P(+1R before -1R)=42.833%  P(-1R before +1R)=40.559%  neither=16.608%  d_race=+0.417 pp
+  time_to_+0.5R=145.0 min  +1R=275.0 min  +2R=405.0 min
+  effect: indistinguishable from baseline
+  also 24-bar range median=0.7070%
+range12 Q3 @12h
+  n=26297
+  mean_fwd=0.1192%  median_fwd=0.1035%  d_median_vs_base=0.0080%
+  MFE=1.0951%  MAE=1.0495%  future_vol=2.5341%
+  P(+0.5R)=76.115%  P(+1R)=53.983%  P(+2R)=25.520%
+  P(+1R before -1R)=45.104%  P(-1R before +1R)=43.237%  neither=11.659%  d_race=+2.688 pp
+  time_to_+0.5R=105.0 min  +1R=235.0 min  +2R=370.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+  also 24-bar range median=0.9903%
+range12 Q4 @12h
+  n=26286
+  mean_fwd=0.2106%  median_fwd=0.1948%  d_median_vs_base=0.0993%
+  MFE=1.3268%  MAE=1.2600%  future_vol=3.0490%
+  P(+0.5R)=80.214%  P(+1R)=60.911%  P(+2R)=32.941%
+  P(+1R before -1R)=46.382%  P(-1R before +1R)=46.945%  neither=6.673%  d_race=+3.966 pp
+  time_to_+0.5R=55.0 min  +1R=155.0 min  +2R=270.0 min
+  effect: directional difference versus baseline
+  also 24-bar range median=1.7478%
+
+future_vol Q1..Q4=['1.7524%', '2.3110%', '2.5341%', '3.0490%']
+P(race+) Q1..Q4=['35.357%', '42.833%', '45.104%', '46.382%']
+VERDICT: C  (directional LONG) / A as expansion persistence
+JUDGMENT: Future vol is monotonic in current range12. Raw P(+1R first) also
+rises, but so does P(-1R first). Resolved coin: Q1 53.9%, Q4 49.7%. High
+current vol predicts expansion, not LONG directional asymmetry.

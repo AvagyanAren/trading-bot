@@ -1,0 +1,1 @@
+range_position = (close - previous_low) / (previous_high - previous_low) using the prior 12 or 24 completed candles, excluding the current bar. Q1 is near the bottom of that range; Q4 near the top. Equal-count buckets, no threshold search.

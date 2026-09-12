@@ -1,0 +1,72 @@
+# Investigation 03 - Trend regime (EMA20 vs EMA50)
+
+EMA20>EMA50 @12h
+  n=55978
+  mean_fwd=0.1200%  median_fwd=0.0671%  d_median_vs_base=-0.0284%
+  MFE=1.0392%  MAE=0.9262%  future_vol=2.4390%
+  P(+0.5R)=73.050%  P(+1R)=51.574%  P(+2R)=24.792%
+  P(+1R before -1R)=43.803%  P(-1R before +1R)=39.140%  neither=17.057%  d_race=+1.387 pp
+  time_to_+0.5R=115.0 min  +1R=230.0 min  +2R=345.0 min
+  effect: small mixed difference
+   15m: n= 56037  med_fwd=  -0.0040%  mean_fwd=   0.0030%  MFE=  0.1112%  MAE=  0.1143%  P(+1R before -1R)=  0.973%  P(-1R first)=  0.883%  neither= 98.144%
+   30m: n= 56037  med_fwd=  -0.0069%  mean_fwd=   0.0066%  MFE=  0.1631%  MAE=  0.1664%  P(+1R before -1R)=  2.986%  P(-1R first)=  2.482%  neither= 94.532%
+    1h: n= 56037  med_fwd=  -0.0120%  mean_fwd=   0.0118%  MFE=  0.2372%  MAE=  0.2400%  P(+1R before -1R)=  7.259%  P(-1R first)=  6.005%  neither= 86.736%
+    2h: n= 56037  med_fwd=  -0.0053%  mean_fwd=   0.0176%  MFE=  0.3509%  MAE=  0.3448%  P(+1R before -1R)= 14.544%  P(-1R first)= 12.413%  neither= 73.043%
+    4h: n= 56037  med_fwd=  -0.0022%  mean_fwd=   0.0277%  MFE=  0.5326%  MAE=  0.5003%  P(+1R before -1R)= 25.305%  P(-1R first)= 22.498%  neither= 52.198%
+   12h: n= 55978  med_fwd=   0.0671%  mean_fwd=   0.1200%  MFE=  1.0392%  MAE=  0.9262%  P(+1R before -1R)= 43.803%  P(-1R first)= 39.140%  neither= 17.057%
+
+EMA20<=EMA50 @12h
+  n=49237
+  mean_fwd=0.1354%  median_fwd=0.1236%  d_median_vs_base=0.0281%
+  MFE=1.0053%  MAE=0.9870%  future_vol=2.3636%
+  P(+0.5R)=74.135%  P(+1R)=50.206%  P(+2R)=22.430%
+  P(+1R before -1R)=40.839%  P(-1R before +1R)=41.518%  neither=17.643%  d_race=-1.577 pp
+  time_to_+0.5R=115.0 min  +1R=245.0 min  +2R=370.0 min
+  effect: small directional difference (below ~0.30R cost scale)
+   15m: n= 49319  med_fwd=   0.0094%  mean_fwd=   0.0022%  MFE=  0.1222%  MAE=  0.1203%  P(+1R before -1R)=  0.996%  P(-1R first)=  1.715%  neither= 97.289%
+   30m: n= 49316  med_fwd=   0.0166%  mean_fwd=   0.0039%  MFE=  0.1806%  MAE=  0.1758%  P(+1R before -1R)=  2.551%  P(-1R first)=  4.287%  neither= 93.162%
+    1h: n= 49310  med_fwd=   0.0338%  mean_fwd=   0.0092%  MFE=  0.2622%  MAE=  0.2523%  P(+1R before -1R)=  5.897%  P(-1R first)=  9.039%  neither= 85.064%
+    2h: n= 49298  med_fwd=   0.0526%  mean_fwd=   0.0253%  MFE=  0.3777%  MAE=  0.3670%  P(+1R before -1R)= 12.096%  P(-1R first)= 16.311%  neither= 71.593%
+    4h: n= 49274  med_fwd=   0.0803%  mean_fwd=   0.0589%  MFE=  0.5423%  MAE=  0.5334%  P(+1R before -1R)= 22.584%  P(-1R first)= 26.036%  neither= 51.380%
+   12h: n= 49237  med_fwd=   0.1236%  mean_fwd=   0.1354%  MFE=  1.0053%  MAE=  0.9870%  P(+1R before -1R)= 40.839%  P(-1R first)= 41.518%  neither= 17.643%
+
+EMA spread Q1 @12h
+  n=26262
+  mean_fwd=0.1663%  median_fwd=0.1901%  d_median_vs_base=0.0946%
+  MFE=1.1345%  MAE=1.1416%  future_vol=2.6582%
+  P(+0.5R)=78.669%  P(+1R)=55.365%  P(+2R)=26.399%
+  P(+1R before -1R)=43.272%  P(-1R before +1R)=45.720%  neither=11.008%  d_race=+0.856 pp
+  time_to_+0.5R=90.0 min  +1R=225.0 min  +2R=350.0 min
+  effect: volatility expansion without meaningful directional race shift
+EMA spread Q2 @12h
+  n=26333
+  mean_fwd=0.0935%  median_fwd=0.0673%  d_median_vs_base=-0.0282%
+  MFE=0.8528%  MAE=0.7910%  future_vol=2.0386%
+  P(+0.5R)=68.595%  P(+1R)=43.990%  P(+2R)=17.662%
+  P(+1R before -1R)=37.759%  P(-1R before +1R)=36.551%  neither=25.690%  d_race=-4.657 pp
+  time_to_+0.5R=150.0 min  +1R=280.0 min  +2R=420.0 min
+  effect: directional difference versus baseline
+EMA spread Q3 @12h
+  n=26334
+  mean_fwd=0.0861%  median_fwd=0.0585%  d_median_vs_base=-0.0369%
+  MFE=0.9300%  MAE=0.8048%  future_vol=2.1903%
+  P(+0.5R)=70.259%  P(+1R)=47.505%  P(+2R)=21.296%
+  P(+1R before -1R)=41.228%  P(-1R before +1R)=36.140%  neither=22.632%  d_race=-1.188 pp
+  time_to_+0.5R=145.0 min  +1R=260.0 min  +2R=370.0 min
+  effect: small mixed difference
+EMA spread Q4 @12h
+  n=26286
+  mean_fwd=0.1632%  median_fwd=0.0892%  d_median_vs_base=-0.0063%
+  MFE=1.1909%  MAE=1.0703%  future_vol=2.6908%
+  P(+0.5R)=76.729%  P(+1R)=56.897%  P(+2R)=29.407%
+  P(+1R before -1R)=47.417%  P(-1R before +1R)=42.620%  neither=9.963%  d_race=+5.001 pp
+  time_to_+0.5R=90.0 min  +1R=200.0 min  +2R=315.0 min
+  effect: directional difference versus baseline
+
+spread Q1..Q4 P(+1R before -1R)=['43.272%', '37.759%', '41.228%', '47.417%']
+monotonic=False
+VERDICT: C
+JUDGMENT: Binary EMA20>EMA50 has a slightly better 12h race (+1.4pp) and a
+worse median forward return (-0.028pp). Short-horizon medians in the uptrend
+are negative. Spread Q4's +5pp raw race is non-monotonic across quartiles
+and does not lift median 12h return. Trend does not provide a LONG edge.

@@ -1,0 +1,24 @@
+# Investigation 11 - Random entry baseline
+
+Samples=100  master_seed=20240101  signal_p=0.08333333333333333 (fixed, not calibrated to A)
+Execution: next-open, 0.05% slippage, 0.1%+0.1% fees, 1% SL, 2% TP, same-candle SL first, 1% risk, $20 start, one position at a time.
+
+v0.4 replica check: net_match=True cash_match=True closed_match=True engine_net=-2.369738905233471 replica_net=-2.3697389052334636
+
+ending_realized_equity: mean=1.3539 median=1.2907 p05=0.9497 p25=1.1882 p75=1.5009 p95=1.8785  strategy_A=5.8290  A_percentile_rank=100.0
+total_net_pnl: mean=-18.6461 median=-18.7093 p05=-19.0503 p25=-18.8118 p75=-18.4991 p95=-18.1215  strategy_A=-14.1710  A_percentile_rank=100.0
+win_rate: mean=0.3289 median=0.3285 p05=0.3188 p25=0.3253 p75=0.3321 p95=0.3399  strategy_A=0.3257  A_percentile_rank=28.0
+average_R: mean=-0.2632 median=-0.2645 p05=-0.2934 p25=-0.2739 p75=-0.2537 p95=-0.2303  strategy_A=-0.2729  A_percentile_rank=28.0
+profit_factor: mean=0.7036 median=0.7065 p05=0.6665 p25=0.6909 p75=0.7180 p95=0.7339  strategy_A=0.6879  A_percentile_rank=24.0
+max_drawdown: mean=19.8769 median=19.8491 p05=19.2001 p25=19.6081 p75=20.0795 p95=20.6309  strategy_A=15.2294  A_percentile_rank=0.0
+closed_trades: mean=991.9800 median=992.0000 p05=965.9500 p25=980.0000 p75=1002.0000 p95=1025.0500  strategy_A=436.0000  A_percentile_rank=0.0
+
+Strategy A ending_realized_equity=5.8290 vs random median 1.2907
+VERDICT: C
+JUDGMENT: A finishes above every random path on ending equity because it
+takes ~436 trades vs ~992. That is slower fee drag, not a better bet. Win
+rate (28th percentile), average R (28th), and profit factor (24th) sit
+inside or below the random bulk. Per-trade, A is the same 1%/2% barrier
+process as noise.
+
+This is a benchmark, not a claim that markets are pure noise.

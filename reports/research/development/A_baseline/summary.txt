@@ -1,0 +1,81 @@
+==============================================================================
+v0.5 research experiment report
+==============================================================================
+
+Period role:         DEVELOPMENT
+Period:              2024-01-01 .. 2024-12-31 (UTC, end date inclusive)
+Generated:           2026-09-11 11:28:52 UTC
+
+This report is research analytics on top of the v0.4 simulator.
+It does NOT mean the strategy is profitable, statistically validated,
+or ready for live trading. STATUS PASS from v0.4 is integrity only.
+A profitable DEVELOPMENT result is not validated until the untouched
+out-of-sample test.
+
+Symbol:              BTCUSDT
+Interval:            5m
+Experiment:          A (BASELINE)
+
+Strategy
+------------------------------------------------------------------------------
+name:                breakout_volume_ema_rsi
+version:             0.3
+breakout_period:     20
+volume_multiplier:   1.5
+rsi_min:             50.0
+rsi_max:             70.0
+rsi_filter_enabled:  True
+
+Backtest (v0.4 engine, unchanged semantics)
+------------------------------------------------------------------------------
+starting_capital:    20.0
+risk_per_trade:      0.01
+stop_loss:           0.01
+take_profit:          0.02
+entry_model:         next_open
+slippage:            0.0005
+same_candle_priority: stop_loss
+entry_rate:          0.001
+exit_rate:           0.001
+
+Account endings (do not collapse these into one number)
+------------------------------------------------------------------------------
+ending_cash:         5.829036960514613
+ending_realized_equity: 5.829036960514044
+ending_mtm_equity:    5.829036960513988
+
+Cost separation (CLOSED trades only)
+------------------------------------------------------------------------------
+total_gross_pnl:     2.100161957399745
+total_fees:          10.847416314563867
+total_slippage:      5.423708682321836
+total_net_pnl:       -14.170963039485958
+
+Counts
+------------------------------------------------------------------------------
+signals:             1343
+filled_trades:       436
+closed_trades:       436
+open_end_of_data:    0
+ignored_signals:     907
+tp_count:            142
+sl_count:            294
+
+Closed-trade analytics
+------------------------------------------------------------------------------
+win_rate:            0.3256880733944954
+loss_rate:           0.6743119266055045
+average_winning_trade: 0.219991171616883
+average_losing_trade:  -0.15445479390844677
+average_net_pnl_per_closed_trade: -0.03250220880616045
+average_R_per_closed_trade: -0.27285138761467287
+expectancy_per_trade: -0.03250220880616045
+expectancy_R:        -0.27285138761467287
+profit_factor:       0.6879309904447147
+total_R:             -118.96320499999737
+max_consecutive_losses: 12
+max_drawdown:        15.229402549417108  (global MTM)
+max_drawdown_pct:    0.7273706636290657
+
+OPEN / END_OF_DATA mark-to-market is informational and is not realized P&L.
+
