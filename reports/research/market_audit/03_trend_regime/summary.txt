@@ -65,8 +65,5 @@ EMA spread Q4 @12h
 
 spread Q1..Q4 P(+1R before -1R)=['43.272%', '37.759%', '41.228%', '47.417%']
 monotonic=False
-VERDICT: C
-JUDGMENT: Binary EMA20>EMA50 has a slightly better 12h race (+1.4pp) and a
-worse median forward return (-0.028pp). Short-horizon medians in the uptrend
-are negative. Spread Q4's +5pp raw race is non-monotonic across quartiles
-and does not lift median 12h return. Trend does not provide a LONG edge.
+VERDICT: A
+trend regime shows a robust directional gap

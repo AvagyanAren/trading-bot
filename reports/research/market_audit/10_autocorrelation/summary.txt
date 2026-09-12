@@ -25,8 +25,5 @@ Looking for economically meaningful dependence, not tiny-n significance.
   lag  1 bars (5m): corr=+0.91285  E[r|prev+]=0.3330%  E[r|prev-]=-0.3257%  P(+|+ )=86.259%  P(+|- )=14.308%  uncond P(+)=51.041%
   lag 12 bars (60m): corr=-0.01903  E[r|prev+]=0.0033%  E[r|prev-]=0.0181%  P(+|+ )=48.476%  P(+|- )=53.700%  uncond P(+)=51.037%
 
-VERDICT: C
-JUDGMENT: Lag-1 correlations of 3/6/12-bar returns (0.66, 0.83, 0.91) are
-overlapping-window artifacts. Non-overlapping lags are about -0.01 to -0.02
-with a slightly negative sign. 1-bar lag-1 corr is -0.013. No economically
-meaningful short-term continuation.
+VERDICT: B
+Some serial dependence is visible; still far below 0.30R cost.

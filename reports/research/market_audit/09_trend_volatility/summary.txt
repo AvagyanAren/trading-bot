@@ -74,8 +74,5 @@ bear_range12_Q4 @12h vs same-trend
   effect: directional difference versus baseline
   vs ALL: race 45.391% vs 42.416%
 
-VERDICT: C
-JUDGMENT: High range inside a downtrend has the largest 12h median bounce
-(0.28%) and also the largest MFE and MAE. Low range inside a downtrend
-rarely hits 1% (raw race 31%). The matrix is an expansion x bounce picture,
-not a directional LONG cell that pays 0.30R.
+VERDICT: B
+interaction cells differ slightly; not strategy-grade

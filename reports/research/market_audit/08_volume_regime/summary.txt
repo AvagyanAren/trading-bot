@@ -101,5 +101,4 @@ vol Q4 ∩ bear @12h
   effect: small mixed difference
 
 VERDICT: C
-JUDGMENT: volume/volume_ma20 does not identify directional continuation,
-mean reversion, or even expansion. Null result.
+volume ratio does not identify a directional LONG edge

@@ -104,10 +104,7 @@ Bucket 20-24 @12h
     4h: n= 17520  med_fwd=   0.0310%  mean_fwd=   0.0328%  MFE=  0.5370%  MAE=  0.5137%  P(+1R before -1R)= 23.065%  P(-1R first)= 23.271%  neither= 53.664%
    12h: n= 17520  med_fwd=   0.1312%  mean_fwd=   0.1456%  MFE=  0.9131%  MAE=  0.8074%  P(+1R before -1R)= 40.445%  P(-1R first)= 36.826%  neither= 22.728%
 
-VERDICT: C
-JUDGMENT: Raw P(+1R first) is a few points higher in 08-12 UTC and lower in
-00-04, but those moves track session activity (MFE/MAE) more than a better
-1R coin. Global 144-bar thinning aliases with a 12h grid and zeros out some
-buckets; monthly splits are mixed. No hour is near 0.30R economic size.
+VERDICT: B
+some buckets differ, but not economically large and month-robust
 
 Comparison is versus ALL 2024 warmup-valid observations, not versus zero. 2024 is a bull year; a positive median forward return is not an edge.

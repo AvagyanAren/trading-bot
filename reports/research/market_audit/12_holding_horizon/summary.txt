@@ -34,8 +34,5 @@ ALL P(+1R before -1R) by horizon:
   15m=0.983%  30m=2.782%  1h=6.622%  2h=13.398%  4h=24.032%  8h=36.283%  12h=42.416%  24h=48.376%
 ALL median forward by horizon:
   15m=0.0022%  30m=0.0035%  1h=0.0081%  2h=0.0216%  4h=0.0351%  8h=0.0768%  12h=0.0955%  24h=0.1641%
-VERDICT: C
-JUDGMENT: Horizon mainly changes how often 1% is reached. Through 4h, -1R
-arrives first more often than +1R. From 8h the resolved coin sits at ~51%
-even at 24h. Median close-to-close drift grows with time but stays below
-one 0.30% round trip. No unique directional timescale.
+VERDICT: B
+The +1R/-1R race changes with horizon; still compare to cost and monthly robustness.

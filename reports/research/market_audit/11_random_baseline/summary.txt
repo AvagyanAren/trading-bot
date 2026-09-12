@@ -14,11 +14,7 @@ max_drawdown: mean=19.8769 median=19.8491 p05=19.2001 p25=19.6081 p75=20.0795 p9
 closed_trades: mean=991.9800 median=992.0000 p05=965.9500 p25=980.0000 p75=1002.0000 p95=1025.0500  strategy_A=436.0000  A_percentile_rank=0.0
 
 Strategy A ending_realized_equity=5.8290 vs random median 1.2907
-VERDICT: C
-JUDGMENT: A finishes above every random path on ending equity because it
-takes ~436 trades vs ~992. That is slower fee drag, not a better bet. Win
-rate (28th percentile), average R (28th), and profit factor (24th) sit
-inside or below the random bulk. Per-trade, A is the same 1%/2% barrier
-process as noise.
+VERDICT: B
+Strategy A finishing equity is above the 95th percentile of random next-open LONG barriers — unusual versus this occupancy process, but A still lost money.
 
 This is a benchmark, not a claim that markets are pure noise.

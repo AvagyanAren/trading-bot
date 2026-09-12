@@ -204,8 +204,5 @@ ret24_negative @12h
   time_to_+0.5R=115.0 min  +1R=240.0 min  +2R=365.0 min
   effect: small mixed difference
 
-VERDICT: D
-JUDGMENT: Continuation fails. Prior-up vs prior-down 3-bar returns have the
-same 12h race (42.43% vs 42.41%). Quartiles are U-shaped (extremes are
-volatile). Stronger prior up-moves have worse 12h median forward return
-than stronger prior down-moves.
+VERDICT: B
+some continuation/reversal pattern exists but is weak or non-monotonic

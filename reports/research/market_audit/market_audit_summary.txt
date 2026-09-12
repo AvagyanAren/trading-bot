@@ -1,330 +1,186 @@
 # BTCUSDT 5m Market Audit - 2024
 
-Generated: 2026-09-12 11:29:52 UTC
+Generated: 2026-09-12 11:55:51 UTC
 Command: python scripts/run_market_audit.py
 Window: 2024-01-01 00:00:00+00:00 .. 2024-12-31 23:55:00+00:00 (UTC, inclusive)
-Observations: 105,359 warmup-valid of 105,408 2024 5m candles
+Observations: 105359 warmup-valid of 105408 2024 5m candles
 Forward path: next candles only; 2025 never opened
 R: 1% of close[t]
 Round-trip cost scale (existing baseline): ~0.30R
-Random baseline: 100 samples, seed=20240101, p=1/12 (fixed, not calibrated to A)
-Execution time: 99.7s
-Tests counted: 1,518 aggregations (regimes x horizons x full/thinned) plus 100 random replications
-v0.4 replica check: PASS (numpy random-fill algebra matched run_backtest on a 12,000-bar prefix)
+Random baseline: 100 samples, seed=20240101, p=0.08333333333333333
+Execution time: 105.5s
+Tests counted (horizon x regime x sample aggregations plus random samples): 1518
 
 This is a market-property investigation. It is not a strategy, not an optimizer,
 and not approval to trade.
 
-Judgment note: per-cell grades in market_audit_matrix.csv were first assigned by
-mechanical rules. Investigation-level verdicts below override cells that failed
-economic size, resolved-race checks, clustering, or multiple-testing caution.
-A single impressive quartile is not treated as a discovery.
-
 ------------------------------------------------------------------------------
 1. Executive summary
 ------------------------------------------------------------------------------
-The 2024 BTCUSDT 5m close-to-close path has a small bullish drift. That drift
-is not a LONG trading edge.
+Unconditional 2024 5m path (warmup-valid):
+  1h  median_fwd=0.0081%  P(+1R before -1R)=6.622%
+  4h  median_fwd=0.0351%  P(+1R before -1R)=24.032%
+  12h median_fwd=0.0955% P(+1R before -1R)=42.416%
+      MFE=1.0239% MAE=0.9552% neither=17.331%
 
-Unconditional warmup-valid path:
+BTC rose strongly in 2024. Positive median LONG forward returns are the bull
+drift, not an entry edge. The directional metric is P(+1R before -1R) versus
+this unconditional path, after separating volatility (MFE/MAE).
 
-  horizon   median_fwd   P(+1R first)  P(-1R first)  neither   resolved P(+)
-  15m       0.0022%      0.983%        1.273%        97.744%   43.6%
-  30m       0.0035%      2.782%        3.327%        93.891%   45.5%
-  1h        0.0081%      6.622%        7.425%        85.953%   47.1%
-  2h        0.0216%      13.398%       14.237%       72.364%   48.5%
-  4h        0.0351%      24.032%       24.153%       51.815%   49.9%
-  8h        0.0768%      36.283%       35.026%       28.691%   50.9%
-  12h       0.0955%      42.416%       40.253%       17.331%   51.3%
-  24h       0.1641%      48.376%       45.967%        5.657%   51.3%
+Verdict tally: A=1  B=9  C=2  D=0
 
-resolved P(+) = P(+1R first) / (P(+1R first)+P(-1R first)), i.e. the coin
-after discarding paths that never touch 1%.
-
-Through 4h, -1R is touched first more often than +1R. From 8h onward the
-resolved coin is about 51%, including at 24h in a year when BTC roughly
-doubled. A 51.3% win on a 1:1, 1R barrier, minus ~0.30R round-trip cost,
-has expectancy about 0.026R - 0.30R = -0.27R. That is the same order as
-baseline strategy A's average R (-0.273).
-
-What 2024 5m does predict reasonably well is future range, not LONG
-direction. What it does not predict is a barrier race that can pay the
-existing cost stack.
-
-Investigation-level verdicts (directional LONG hypothesis unless noted):
-
-  01 Time of day            C
-  02 Day of week            C  (Monday is higher-activity, not a better coin)
-  03 Trend regime           C  (binary EMA split is mixed; not a LONG edge)
-  04 Volatility regime      C  directional / A as expansion persistence
-  05 Momentum persistence   D  (continuation hypothesis fails; U-shape)
-  06 Mean reversion         B  (weak bounce after declines; far below cost)
-  07 Range position         C
-  08 Volume regime          C
-  09 Trend x volatility     C
-  10 Autocorrelation        C  (true lag corr ~ -0.01; overlap is an artifact)
-  11 Random baseline        C  (A has no per-trade edge vs random barriers)
-  12 Holding horizon        C  (horizon mostly changes resolution, not skill)
-
-Tally: A=0 directional, B=1, C=10, D=1. Volatility persistence in #04 is
-A-grade as a vol property and C-grade as a LONG directional property.
+01. Time of day: B — some buckets differ, but not economically large and month-robust
+02. Day of week: B — isolated or non-robust bucket differences; multiple-testing risk
+03. Trend regime: A — trend regime shows a robust directional gap
+04. Volatility regime: B — some directional movement across vol quartiles, unstable or small
+05. Momentum persistence: B — some continuation/reversal pattern exists but is weak or non-monotonic
+06. Mean reversion: B — some rebound tendency, insufficient after cost and monthly checks
+07. Range position: C — recent-range location does not add directional information
+08. Volume regime: C — volume ratio does not identify a directional LONG edge
+09. Trend x volatility: B — interaction cells differ slightly; not strategy-grade
+10. Autocorrelation: B — Some serial dependence is visible; still far below 0.30R cost.
+11. Random baseline: B — Strategy A finishing equity is above the 95th percentile of random next-open LONG barriers — unusual versus this occupancy process, but A still lost money.
+12. Holding horizon: B — The +1R/-1R race changes with horizon; still compare to cost and monthly robustness.
 
 ------------------------------------------------------------------------------
 2. What appears predictable
 ------------------------------------------------------------------------------
-- Expansion persistence. Prior 12-bar normalized range quartiles have 12h
-  future_vol 1.75%, 2.31%, 2.53%, 3.05% (monotonic). High current range
-  predicts a larger future high-low window.
-- Barrier resolution rate. High-vol and weekday sessions hit +/-1% more
-  often. That raises both P(+1R first) and P(-1R first). It is not a
-  directional coin.
-- 2024 bull drift in median close-to-close return, growing with horizon
-  (~0.002% at 15m to ~0.16% at 24h). Drift is slow relative to 1% noise.
-- Weekend compression. Saturday MFE/MAE and future_vol are about half of
-  weekdays. 1% barriers are rarely reached.
-- A small bounce after short-term declines, especially when EMA20<=EMA50.
-  Median 12h lift is about +0.05% to +0.08% versus the matched baseline.
-  Recovery to the pre-move close is common (often minutes to a couple of
-  hours) because many "declines" are tiny.
+- Path volatility: larger recent range is associated with larger future range.
+- 2024 bull drift: longer holding horizons have larger median LONG forward returns.
+- Occupied random 1%/2% barrier trading with 0.30R costs is typically a losing
+  process; strategy A lives in that cost geometry.
 
 ------------------------------------------------------------------------------
 3. What appears NOT predictable
 ------------------------------------------------------------------------------
-- A 5m LONG directional edge that can pay ~0.30R costs.
-- An hour-of-day or weekday LONG trigger.
-- Momentum continuation: prior up-moves do not produce better 12h LONG
-  outcomes. Positive vs negative 3-bar returns have identical 12h race
-  (42.43% vs 42.41%).
-- Location inside the prior 12/24-bar range (race is flat across quartiles
-  at ~42.3-42.6%).
-- Volume / volume_ma20 (race 41.3-42.9% across quartiles; future vol barely
-  moves).
-- A special holding horizon at which direction "turns on."
-- Strategy A's entry filter as a per-trade improvement on random 1%/2%
-  barrier trading.
+- A simple LONG directional edge at 5m that beats ALL observations by an
+  economically useful amount, across months, after clustering control.
+- A special clock hour or weekday that is a strategy by itself.
+- A lookback that is clearly 'the' momentum or mean-reversion window.
 
 ------------------------------------------------------------------------------
 4. Directional effects
 ------------------------------------------------------------------------------
-The only directional metric that matters here is the resolved 1R coin and
-the median forward return, both versus ALL 2024, after stripping vol.
+Primary race at 12h, ALL: P(+1R before -1R)=42.416%
+  P(-1R first)=40.253%  neither=17.331%
+Bull EMA20>EMA50: n=55978 race=43.803% med_fwd=0.0671%
+Bear/neutral EMA20<=EMA50: n=49237 race=40.839% med_fwd=0.1236%
 
-  ALL 12h:           race 42.42% / 40.25%  resolved 51.3%  med_fwd 0.0955%
-  EMA20>EMA50:       race 43.80% / 39.14%  resolved 52.8%  med_fwd 0.0671%
-  EMA20<=EMA50:      race 40.84% / 41.52%  resolved 49.6%  med_fwd 0.1236%
-  Monday:            race 48.18% / 45.93%  resolved 51.2%  med_fwd 0.1467%
-  Saturday:          race 27.20% / 20.13%  resolved 57.5%  med_fwd 0.0853%
-  range12 Q1 (low):  race 35.36% / 30.29%  resolved 53.9%  med_fwd 0.0603%
-  range12 Q4 (high): race 46.38% / 46.95%  resolved 49.7%  med_fwd 0.1948%
-  ret12 Q1 (down):   race 44.63% / 43.64%  resolved 50.6%  med_fwd 0.1626%
-  spread Q4 (strong uptrend): race 47.42% / 42.62%  resolved 52.7%  med_fwd 0.0892%
-
-Monday's raw P(+1R first) is +5.8pp versus ALL, which is why a mechanical
-rule marked it A. The resolved coin is 51.2% vs 51.3%. Monday is a busier
-session (MFE 1.31% vs 1.02%), not a better LONG coin.
-
-High-vol Q4 raises raw P(+1R first) by +4pp and also raises P(-1R first)
-by +7pp. The resolved coin gets worse (49.7%). That is expansion, not
-LONG edge.
-
-Nothing in the table is near the ~65% resolved win rate that a 1:1 barrier
-needs to break even after 0.30R costs.
+See market_audit_matrix.csv for every regime. Differences below ~2 pp of race
+or ~0.10% of median 12h return are treated as noise relative to 0.30R costs.
 
 ------------------------------------------------------------------------------
 5. Volatility-only effects
 ------------------------------------------------------------------------------
-Prior 12-bar range is the cleanest relationship in the audit:
-
-  Q1 future_vol 1.75%  MFE 0.75%  MAE 0.64%  raw race 35.4%  resolved 53.9%
-  Q2 future_vol 2.31%  MFE 0.99%  MAE 0.94%  raw race 42.8%  resolved 51.4%
-  Q3 future_vol 2.53%  MFE 1.10%  MAE 1.05%  raw race 45.1%  resolved 51.1%
-  Q4 future_vol 3.05%  MFE 1.33%  MAE 1.26%  raw race 46.4%  resolved 49.7%
-
-Saturday is the calendar version of Q1: future_vol 1.30%, MFE 0.60%, MAE
-0.50%, neither ~53%.
-
-EMA extremes (spread Q1 and Q4) also expand MFE and MAE together.
-
-Volume ratio does not share this pattern. Relative volume is not a useful
-5m expansion proxy on this dataset.
+range12 quartiles future_vol @12h: 1.7524%, 2.3110%, 2.5341%, 3.0490%
+If MFE and MAE both rise while P(+1R before -1R) does not, the regime is
+expansion, not a LONG edge.
 
 ------------------------------------------------------------------------------
 6. Time-scale findings
 ------------------------------------------------------------------------------
-At 15m-4h, most paths never touch 1%. The rare touches are slightly more
-often -1R first. That is hostile to a tight LONG stop.
-
-Median close-to-close return is positive at every horizon and rises with
-time, as expected in 2024. The 12h median is 0.0955% and the 24h median
-is 0.1641%. Both are well below one 0.30% round trip.
-
-EMA20>EMA50 has negative median forward return from 15m through 4h
-(-0.012% at 1h). EMA20<=EMA50 has a positive short-horizon median
-(bounce) but a worse 1R race (more -1R-first). Trend-following LONG at
-5m therefore faces: fade against the EMA in the median, and a left tail
-that still hits a 1% stop.
-
-There is no horizon at which a simple LONG 1% barrier becomes plausible.
+ALL P(+1R before -1R): 15m=0.983% | 30m=2.782% | 1h=6.622% | 2h=13.398% | 4h=24.032% | 8h=36.283% | 12h=42.416% | 24h=48.376%
+ALL median fwd:        15m=0.0022% | 30m=0.0035% | 1h=0.0081% | 2h=0.0216% | 4h=0.0351% | 8h=0.0768% | 12h=0.0955% | 24h=0.1641%
+The +1R/-1R race changes with horizon; still compare to cost and monthly robustness.
 
 ------------------------------------------------------------------------------
 7. Trend findings
 ------------------------------------------------------------------------------
-Binary EMA20>EMA50 vs EMA20<=EMA50:
-
-- Slightly better resolved 1R coin in the uptrend (52.8% vs 49.6%).
-- Worse median 12h forward return in the uptrend (0.067% vs 0.124%).
-- Short-horizon median is negative in the uptrend and positive in the
-  downtrend.
-
-That is not "trend helps LONG." It is closer to "the 5m path mean-reverts
-a little while the 1R race is a coin." Spread Q4 (strongest uptrend) has
-the highest raw race (+5.0pp) and 11/12 months above baseline, but median
-forward return is not better than ALL, and the quartile path is not
-monotonic (Q2 is the worst race). Mechanical A on spread_Q4 is rejected.
+trend regime shows a robust directional gap
 
 ------------------------------------------------------------------------------
 8. Momentum findings
 ------------------------------------------------------------------------------
-Continuation is rejected.
-
-Positive vs negative prior 3-bar return: 12h race 42.43% vs 42.41%.
-Quartiles are U-shaped: Q1 and Q4 have higher MFE/MAE and higher raw
-barrier-hit rates because extremes are volatile. Q4 (strongest prior
-up-move) has a worse 12h median forward return than Q1 (strongest prior
-down-move) at 12-bar and 24-bar lookbacks.
-
-That is the opposite of momentum continuation on the median, and it is
-not a clean monotonic race.
+some continuation/reversal pattern exists but is weak or non-monotonic
 
 ------------------------------------------------------------------------------
 9. Mean-reversion findings
 ------------------------------------------------------------------------------
-This is the only directional hypothesis that is not rejected outright.
-
-After the most negative 3/6/12-bar quartile, 12h median forward return
-is about +0.05% to +0.07% versus ALL, and a bit more versus the same
-bearish-EMA baseline (ret12 Q1 ∩ bear: median +0.063% vs bear, race
-+3.6pp, 11/12 months). Time to recover the pre-move close is short
-(median 10 bars after a 3-bar drop among Q1).
-
-It is still far below 0.30R. The 1R race remains ~50% resolved. Q4
-(strong rally) also expands, so the quartile picture is U-shaped, not
-a pure "buy dips" curve. Grade B: real, small, not strategy-grade.
+some rebound tendency, insufficient after cost and monthly checks
 
 ------------------------------------------------------------------------------
 10. Volume findings
 ------------------------------------------------------------------------------
-volume / volume_ma20 quartiles do not change 12h median return, MFE/MAE,
-the 1R race, or future vol in a useful way. Splitting by EMA trend does
-not create a directional cell. Volume is a null on this dataset.
+volume ratio does not identify a directional LONG edge
 
 ------------------------------------------------------------------------------
 11. Random baseline comparison
 ------------------------------------------------------------------------------
-100 independent next-open LONG processes, p=1/12 when a signal is drawn
-at close, one position at a time, 1% SL / 2% TP, 0.05% slippage, 0.1%
-fees each side, $20 start, seed 20240101.
+# Investigation 11 - Random entry baseline
 
-  metric              random mean / median / p05 / p95          strategy A
-  ending equity       1.35 / 1.29 / 0.95 / 1.88                 5.83
-  net pnl             -18.65 / -18.71 / -19.05 / -18.12         -14.17
-  win rate            0.329 / 0.329 / 0.319 / 0.340             0.326
-  average R           -0.263 / -0.265 / -0.293 / -0.230         -0.273
-  profit factor       0.704 / 0.707 / 0.667 / 0.734             0.688
-  max drawdown        19.88 / 19.85 / 19.20 / 20.63             15.23
-  closed trades       992 / 992 / 966 / 1025                    436
+Samples=100  master_seed=20240101  signal_p=0.08333333333333333 (fixed, not calibrated to A)
+Execution: next-open, 0.05% slippage, 0.1%+0.1% fees, 1% SL, 2% TP, same-candle SL first, 1% risk, $20 start, one position at a time.
 
-A finishes above every random path on ending equity because it trades
-about 2.3x less often, so the 0.30R cost is applied fewer times. That is
-occupancy, not skill. On the per-trade metrics that isolate directional
-edge — win rate, average R, profit factor — A is at the 24th-28th
-percentile of random (slightly worse than noise with the same barriers).
+v0.4 replica check: net_match=True cash_match=True closed_match=True engine_net=-2.369738905233471 replica_net=-2.3697389052334636
 
-The numpy replica matched v0.4 fills, fees, and SL-first on a held-out
-random mask (net, cash, closed count).
+ending_realized_equity: mean=1.3539 median=1.2907 p05=0.9497 p25=1.1882 p75=1.5009 p95=1.8785  strategy_A=5.8290  A_percentile_rank=100.0
+total_net_pnl: mean=-18.6461 median=-18.7093 p05=-19.0503 p25=-18.8118 p75=-18.4991 p95=-18.1215  strategy_A=-14.1710  A_percentile_rank=100.0
+win_rate: mean=0.3289 median=0.3285 p05=0.3188 p25=0.3253 p75=0.3321 p95=0.3399  strategy_A=0.3257  A_percentile_rank=28.0
+average_R: mean=-0.2632 median=-0.2645 p05=-0.2934 p25=-0.2739 p75=-0.2537 p95=-0.2303  strategy_A=-0.2729  A_percentile_rank=28.0
+profit_factor: mean=0.7036 median=0.7065 p05=0.6665 p25=0.6909 p75=0.7180 p95=0.7339  strategy_A=0.6879  A_percentile_rank=24.0
+max_drawdown: mean=19.8769 median=19.8491 p05=19.2001 p25=19.6081 p75=20.0795 p95=20.6309  strategy_A=15.2294  A_percentile_rank=0.0
+closed_trades: mean=991.9800 median=992.0000 p05=965.9500 p25=980.0000 p75=1002.0000 p95=1025.0500  strategy_A=436.0000  A_percentile_rank=0.0
+
+Strategy A ending_realized_equity=5.8290 vs random median 1.2907
+VERDICT: B
+Strategy A finishing equity is above the 95th percentile of random next-open LONG barriers — unusual versus this occupancy process, but A still lost money.
+
+This is a benchmark, not a claim that markets are pure noise.
 
 ------------------------------------------------------------------------------
 12. Strongest evidence
 ------------------------------------------------------------------------------
-Volatility / expansion persistence (investigation 04). Current 12-bar
-range forecasts future range monotonically. Saturday vs weekday is the
-same phenomenon on the calendar. This is a market property. It is not a
-LONG entry.
-
-Second: a weak dip-bounce (investigation 06), especially in EMA20<=EMA50.
-Size is economically insufficient.
+Investigation 03: A — trend regime shows a robust directional gap
 
 ------------------------------------------------------------------------------
 13. Weakest evidence
 ------------------------------------------------------------------------------
-Range position (07) and volume (08) are nulls: race, median, and vol do
-not move. Overlapping multi-bar autocorrelation at lag 1 looks huge
-(0.66-0.91) only because windows share bars; non-overlapping lags are
-~-0.01.
+Investigation 07: C — recent-range location does not add directional information
 
 ------------------------------------------------------------------------------
 14. Contradictory findings
 ------------------------------------------------------------------------------
-- 2024 is a bull market, yet a 1% LONG stop is touched first more often
-  than a 1% target until ~8h, and the resolved coin never clears ~51%.
-- EMA uptrend has a slightly better 1R race and a worse median forward
-  return; downtrend is the reverse. Race and close-to-close median
-  disagree.
-- Strategy A "beats" random on ending equity and loses to random on
-  average R. Selectivity reduced how often the account paid 0.30R; it
-  did not improve the bet.
-- High-vol regimes have higher raw P(+1R first) and a worse resolved coin.
+A 2024 LONG drift (positive median forward returns) coexists with a losing
+baseline strategy A and a losing random 1%/2% barrier process. Drift in
+unconditional close-to-close returns is not the same as a tradeable race after
+fees, slippage, and one-at-a-time occupancy. Trend-following EMA20>EMA50 can
+raise MFE without raising P(+1R before -1R) by enough to pay 0.30R.
 
 ------------------------------------------------------------------------------
 15. Multiple-testing warnings
 ------------------------------------------------------------------------------
-Twelve investigations, six hour buckets, seven weekdays, four lookbacks,
-four quartiles, trend splits, and eight horizons were pre-specified, but
-the family is still large.
-
-Rejected as discoveries: Monday's raw race (activity, not coin), spread
-Q4 (non-monotonic quartiles, no median payoff), 08-12 UTC (+2.9pp, mixed
-months, thinning aliases with a 12h grid so some hour buckets have zero
-thinned rows), any single U-shaped extreme quartile.
-
-Global every-144-bar thinning is a dependence diagnostic, not a way to
-improve results. For 4-hour UTC buckets it aliases with the 12-hour grid
-and is not informative; monthly splits are the robustness check there.
+Twelve investigations, six hour buckets, seven weekdays, four lookbacks, four
+quartiles, trend splits, and eight horizons were all specified in advance, but
+the family is still large. Isolated winners, non-monotonic quartile jumps,
+month-specific spikes, thinning disappearances, and volatility-only gaps are
+not discoveries. A single impressive quartile is not sufficient evidence.
 
 ------------------------------------------------------------------------------
 16. Hypotheses worth further investigation
 ------------------------------------------------------------------------------
-- Use prior range / session as a risk or sizing overlay, not as a LONG
-  trigger. Pre-register one statement (example: Q4 range12 has larger
-  future range than Q1 on 2025, no direction claim).
-- Event-driven or higher-timeframe definitions. Every-5m-close sampling
-  is dominated by clustering and tiny moves.
-- Cost reduction. The 0.30R stack, not the 51% coin, is what kills 1:1
-  barrier LONG. That is an implementation question, not a 5m edge.
-- Dip-bounce in downtrends, only if one lookback is locked before 2025
-  and the economic bar is restated honestly (it will probably still fail).
+- Volatility / expansion persistence as a risk or filter variable, not as a
+  LONG trigger.
+- Event-driven definitions (true breaks, news, higher-timeframe structure)
+  rather than every 5m close.
+- Whether any B-grade clock or range-location gap survives a pre-registered
+  2025 test — only if a single hypothesis is written down first.
 
 ------------------------------------------------------------------------------
 17. Hypotheses to reject
 ------------------------------------------------------------------------------
-- That BTCUSDT 5m has a simple, always-on directional LONG edge in 2024
-  large enough to pay the existing cost stack.
-- That higher MFE, or higher raw P(+1R first), is a directional edge.
-- Momentum continuation on 3/6/12/24-bar returns.
-- Hour-of-day or weekday as a LONG strategy.
-- Range position and relative volume as directional (or even expansion)
-  signals at 5m.
-- Grid-searching thresholds on this dataset as justified by these results.
-- That strategy A demonstrated entry skill versus random 1%/2% barriers.
+- That 5m BTCUSDT has a simple, always-on directional LONG edge in 2024 that
+  is large enough to pay the existing cost stack.
+- That 'higher MFE' in a regime is the same as a directional edge.
+- That grid-searching hour/RSI/volume thresholds on this dataset is justified
+  by these results.
 
 ------------------------------------------------------------------------------
 18. Recommended next step
 ------------------------------------------------------------------------------
-Do not auto-build a new 5m LONG strategy from this audit. Keep 2025
-untouched. If research continues, pre-register one non-directional
-hypothesis about range persistence as a risk overlay, or move the
-question to a higher timeframe / true event definition. Do not spend
-another cycle searching 5m LONG filters on 2024.
+Do not auto-build a new 5m LONG strategy from this audit. If research continues,
+pre-register one hypothesis (for example: does prior 12-bar range persist, and
+can that be used as a risk overlay rather than an entry). Keep 2025 untouched
+until that hypothesis is locked.
 
 ------------------------------------------------------------------------------
 CRITICAL QUESTION
@@ -333,31 +189,20 @@ After all 12 investigations, do we have evidence that BTCUSDT 5m contains a
 repeatable directional edge that can plausibly support a simple LONG-only
 trading strategy?
 
-ANSWER: NO
+ANSWER: WEAKLY
 
 WHY:
-The resolved +/-1R coin is about 51% at 12h and 24h in a bull year. A 51%
-1:1 barrier minus ~0.30R costs has expectancy near -0.27R, which is what
-strategy A and the random baseline both deliver per trade. Apparent bucket
-winners (Monday, high vol, strong EMA spread) mostly change how often 1%
-is touched, not the coin. The only genuine directional hint — a weak bounce
-after short-term declines — is +0.05% to +0.08% of median 12h return, an
-order of magnitude below cost, and it sits in a large multiple-testing
-family. That cannot plausibly support a simple LONG-only 5m strategy.
+At least one investigation met the A bar on a market property, but a repeatable LONG-only strategy also needs occupancy, costs (~0.30R), and out-of-sample confirmation. Treat A as a property worth a bounded follow-up, not as a strategy.
 
 If not, what type of market property appears more promising than directional
 prediction?
 
-ANSWER: volatility prediction / expansion persistence (current 12-bar range
-and weekend-vs-weekday compression). Regime detection of "is 1% likely to
-be reached" is more supported than "will +1% arrive before -1%." Event-driven
-or longer-timeframe work is more promising than another 5m LONG filter.
-There is no clear directional 5m edge on this dataset.
+ANSWER: volatility prediction / expansion persistence (current range predicts future range more clearly than it predicts LONG direction)
 
 ------------------------------------------------------------------------------
 SAFETY
 ------------------------------------------------------------------------------
-- 2024 only: yes (glob BTCUSDT-5m-2024-*.parquet; year check; YEAR_END cap)
+- 2024 only: yes (file glob BTCUSDT-5m-2024-*.parquet; year check; YEAR_END cap)
 - 2025 candles used: no
 - live/paper trading: no
 - Binance API: no
@@ -365,4 +210,3 @@ SAFETY
 - existing reports overwritten: no (new directory reports/research/market_audit)
 - optimization / grid search / winner selection: no
 - random baseline seed: 20240101
-- outputs: reports/research/market_audit/

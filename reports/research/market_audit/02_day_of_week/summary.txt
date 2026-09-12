@@ -112,9 +112,5 @@ Sunday @12h
     4h: n= 14976  med_fwd=   0.0289%  mean_fwd=   0.0200%  MFE=  0.4237%  MAE=  0.3918%  P(+1R before -1R)= 17.829%  P(-1R first)= 18.423%  neither= 63.749%
    12h: n= 14976  med_fwd=   0.1351%  mean_fwd=   0.0758%  MFE=  0.9284%  MAE=  0.7920%  P(+1R before -1R)= 39.890%  P(-1R first)= 37.841%  neither= 22.269%
 
-VERDICT: C
-JUDGMENT: Monday's raw race is +5.8pp vs ALL, which a mechanical rule marked
-A. Resolved P(+1R | either barrier) is 51.2% vs ALL 51.3%. Monday is a
-higher-activity weekday (MFE 1.31% vs 1.02%), not a better LONG coin.
-Saturday's collapsed race is weekend volatility compression. Isolated
-weekday winners in a 7-way split are not a strategy.
+VERDICT: B
+isolated or non-robust bucket differences; multiple-testing risk

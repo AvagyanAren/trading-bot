@@ -69,7 +69,4 @@ pos24 Q4 @12h
   pos24 race Q1..Q4=['41.735%', '41.358%', '43.077%', '43.493%']
 
 VERDICT: C
-JUDGMENT: pos12 race Q1..Q4 is 42.46%, 42.31%, 42.28%, 42.61% — flat. Median
-12h return is slightly higher near the bottom of the prior range, still far
-below cost. Range location does not add directional information beyond
-previous pullback work.
+recent-range location does not add directional information

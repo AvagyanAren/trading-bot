@@ -221,8 +221,4 @@ ret6 Q1 recovery_bars=14.0 hit=78.572%
 ret12 Q1 recovery_bars=21.0 hit=71.695%
 ret24 Q1 recovery_bars=32.0 hit=61.944%
 VERDICT: B
-JUDGMENT: After the most negative prior-return quartile, 12h median forward
-return is about +0.05% to +0.08% vs baseline, a bit more inside EMA20<=EMA50,
-with short recovery times to the pre-move close. The 1R resolved coin stays
-~50%. This is a real but economically insufficient bounce, and Q4 extremes
-also expand, so the curve is not a clean "buy dips" monotone.
+some rebound tendency, insufficient after cost and monthly checks

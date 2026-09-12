@@ -39,7 +39,5 @@ range12 Q4 @12h
 
 future_vol Q1..Q4=['1.7524%', '2.3110%', '2.5341%', '3.0490%']
 P(race+) Q1..Q4=['35.357%', '42.833%', '45.104%', '46.382%']
-VERDICT: C  (directional LONG) / A as expansion persistence
-JUDGMENT: Future vol is monotonic in current range12. Raw P(+1R first) also
-rises, but so does P(-1R first). Resolved coin: Q1 53.9%, Q4 49.7%. High
-current vol predicts expansion, not LONG directional asymmetry.
+VERDICT: B
+some directional movement across vol quartiles, unstable or small
