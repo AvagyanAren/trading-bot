@@ -1,0 +1,93 @@
+# RANDOM_BASELINE - RANDOM
+
+Definition: Existing occupancy process: independent Bernoulli(p=1/12) on each bar, seed=20240101, first sample of the investigation-11 generator; replayed through the v0.4 engine.
+Execution: v0.4 engine, next-open, 1% SL, 2% TP, 0.05% slippage, 0.1%+0.1% fees,
+1% risk, $20 start, LONG-only, one position, no leverage.
+Development and validation are independent $20 replays. Parameters frozen.
+
+## 5m
+------------------------------------------------------------------------------
+group:               GROUP 3
+robustness_score:    n/a
+flags:               (none)
+gate_failures:       dev_avg_R<=0, dev_net_pnl<=0, dev_max_drawdown>60%, val_avg_R<=0, val_net_pnl<=0
+beat BASELINE_A val avg R / net: True / False
+beat RANDOM val avg R / net:     False / False
+val/dev avg R ratio: 0.7535527155
+val/dev PF ratio:    1.066361723
+
+DEVELOPMENT 2024-01-01 .. 2024-08-31
+  closed=692  wins=220  losses=472  win_rate=0.3179190751
+  gross=1.918156516  fees=13.00730319  slip=6.503652075  net=-17.59279875
+  avg_net=-0.02542311958  avg_R=-0.2961234335  PF=0.6783989857
+  DD$=18.74806992  DD%=0.8892013  final_equity=2.40720125
+  median_hold=0 days 03:32:30  avg_hold=0 days 07:26:48.815028902
+  win_streak=5  loss_streak=14
+  0/8 months with trades were net-positive
+
+VALIDATION 2024-09-01 .. 2024-12-31
+  closed=298  wins=102  losses=196  win_rate=0.3422818792
+  gross=3.183728341  fees=8.801727312  slip=4.400864452  net=-10.01886342
+  avg_net=-0.03362034705  avg_R=-0.2231446174  PF=0.7234187116
+  DD$=10.20696076  DD%=0.5100704481  final_equity=9.981136578
+  median_hold=0 days 04:10:00  avg_hold=0 days 08:49:34.832214765
+  win_streak=5  loss_streak=10
+  0/4 months with trades were net-positive
+
+## 15m
+------------------------------------------------------------------------------
+group:               GROUP 3
+robustness_score:    n/a
+flags:               (none)
+gate_failures:       dev_avg_R<=0, dev_net_pnl<=0, dev_max_drawdown>60%, val_avg_R<=0, val_net_pnl<=0
+beat BASELINE_A val avg R / net: False / False
+beat RANDOM val avg R / net:     False / False
+val/dev avg R ratio: 0.7117900252
+val/dev PF ratio:    1.070518503
+
+DEVELOPMENT 2024-01-01 .. 2024-08-31
+  closed=527  wins=165  losses=362  win_rate=0.3130929791
+  gross=1.749470939  fees=12.03533455  slip=6.017667715  net=-16.30353133
+  avg_net=-0.03093649209  avg_R=-0.3105800114  PF=0.6779659351
+  DD$=17.27277218  DD%=0.8247395719  final_equity=3.696468669
+  median_hold=0 days 04:00:00  avg_hold=0 days 08:02:21.745730550
+  win_streak=6  loss_streak=18
+  1/8 months with trades were net-positive
+
+VALIDATION 2024-09-01 .. 2024-12-31
+  closed=242  wins=83  losses=159  win_rate=0.3429752066
+  gross=2.832844647  fees=7.601324139  slip=3.800662778  net=-8.56914227
+  avg_net=-0.0354096788  avg_R=-0.2210677541  PF=0.7257750777
+  DD$=8.887665203  DD%=0.4443832602  final_equity=11.43085773
+  median_hold=0 days 05:45:00  avg_hold=0 days 09:22:07.685950413
+  win_streak=4  loss_streak=12
+  0/4 months with trades were net-positive
+
+## 1h
+------------------------------------------------------------------------------
+group:               GROUP 3
+robustness_score:    n/a
+flags:               (none)
+gate_failures:       dev_avg_R<=0, dev_net_pnl<=0, val_avg_R<=0, val_net_pnl<=0
+beat BASELINE_A val avg R / net: False / False
+beat RANDOM val avg R / net:     False / False
+val/dev avg R ratio: 1.128764951
+val/dev PF ratio:    0.9294458025
+
+DEVELOPMENT 2024-01-01 .. 2024-08-31
+  closed=246  wins=79  losses=167  win_rate=0.3211382114
+  gross=0.2584309114  fees=7.073928147  slip=3.536964138  net=-10.35246137
+  avg_net=-0.04208317632  avg_R=-0.2864805061  PF=0.6558378829
+  DD$=10.95221335  DD%=0.5345444875  final_equity=9.647538626
+  median_hold=0 days 06:00:00  avg_hold=0 days 10:41:27.804878049
+  win_streak=5  loss_streak=20
+  1/8 months with trades were net-positive
+
+VALIDATION 2024-09-01 .. 2024-12-31
+  closed=136  wins=42  losses=94  win_rate=0.3088235294
+  gross=-0.852907808  fees=4.288811293  slip=2.144405433  net=-7.286124534
+  avg_net=-0.0535744451  avg_R=-0.3233691544  PF=0.6095657674
+  DD$=7.997686738  DD%=0.3998843369  final_equity=12.71387547
+  median_hold=0 days 06:00:00  avg_hold=0 days 10:05:17.647058824
+  win_streak=4  loss_streak=11
+  0/4 months with trades were net-positive

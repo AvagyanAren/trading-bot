@@ -1,0 +1,157 @@
+timeframe,period_role,metric,value
+5m,DEVELOPMENT,starting_capital,20.0
+5m,DEVELOPMENT,ending_cash,0.0
+5m,DEVELOPMENT,ending_realized_equity,4.73208075839894
+5m,DEVELOPMENT,ending_mtm_equity,4.733498912554268
+5m,DEVELOPMENT,total_net_pnl,-15.267919241601065
+5m,DEVELOPMENT,total_gross_pnl,4.167903226263436
+5m,DEVELOPMENT,total_fees,12.95721428392626
+5m,DEVELOPMENT,total_slippage,6.478608183938241
+5m,DEVELOPMENT,signals,13661
+5m,DEVELOPMENT,filled_trades,544
+5m,DEVELOPMENT,closed_trades,543
+5m,DEVELOPMENT,open_end_of_data,1
+5m,DEVELOPMENT,ignored_signals,13117
+5m,DEVELOPMENT,ignored_position_open,13117
+5m,DEVELOPMENT,ignored_no_next_candle,0
+5m,DEVELOPMENT,ignored_insufficient_cash,0
+5m,DEVELOPMENT,tp_count,180
+5m,DEVELOPMENT,sl_count,363
+5m,DEVELOPMENT,win_count,180
+5m,DEVELOPMENT,loss_count,363
+5m,DEVELOPMENT,scratch_count,0
+5m,DEVELOPMENT,win_rate,0.3314917127071823
+5m,DEVELOPMENT,loss_rate,0.6685082872928176
+5m,DEVELOPMENT,average_winning_trade,0.21264608497743837
+5m,DEVELOPMENT,average_losing_trade,-0.14750472324391176
+5m,DEVELOPMENT,median_winning_trade,0.215476327018081
+5m,DEVELOPMENT,median_losing_trade,-0.13504138362271448
+5m,DEVELOPMENT,profit_factor,0.7148539879897445
+5m,DEVELOPMENT,average_net_pnl_per_closed_trade,-0.02811771499374045
+5m,DEVELOPMENT,average_R_per_closed_trade,-0.25546657734806094
+5m,DEVELOPMENT,expectancy_per_trade,-0.02811771499374045
+5m,DEVELOPMENT,expectancy_R,-0.25546657734806094
+5m,DEVELOPMENT,median_R,-1.248450499999992
+5m,DEVELOPMENT,total_R,-138.71835149999708
+5m,DEVELOPMENT,average_holding_time,0 days 07:53:02.320441989
+5m,DEVELOPMENT,median_holding_time,0 days 03:35:00
+5m,DEVELOPMENT,max_holding_time,3 days 01:50:00
+5m,DEVELOPMENT,average_holding_candles,94.60773480333333
+5m,DEVELOPMENT,median_holding_candles,43.0
+5m,DEVELOPMENT,max_holding_candles,886.0
+5m,DEVELOPMENT,max_consecutive_wins,5
+5m,DEVELOPMENT,max_consecutive_losses,10
+5m,DEVELOPMENT,max_drawdown,16.678439229262516
+5m,DEVELOPMENT,max_drawdown_pct,0.7794401482326646
+5m,DEVELOPMENT,max_drawdown_peak_timestamp,2024-01-02 09:00:00+00:00
+5m,DEVELOPMENT,max_drawdown_trough_timestamp,2024-08-31 20:05:00+00:00
+5m,DEVELOPMENT,largest_win_net_pnl,0.36258662455999013
+5m,DEVELOPMENT,sum_of_winning_net_pnl,38.2762952959389
+5m,DEVELOPMENT,months_with_closed_trades,8
+5m,DEVELOPMENT,max_month_share_of_net,
+5m,DEVELOPMENT,open_entry_fees,0.004727353404994744
+5m,DEVELOPMENT,unresolved_reserved,4.732080758399738
+15m,DEVELOPMENT,starting_capital,20.0
+15m,DEVELOPMENT,ending_cash,0.0
+15m,DEVELOPMENT,ending_realized_equity,6.850366411885192
+15m,DEVELOPMENT,ending_mtm_equity,6.822749214697157
+15m,DEVELOPMENT,total_net_pnl,-13.149633588114794
+15m,DEVELOPMENT,total_gross_pnl,3.278997341576711
+15m,DEVELOPMENT,total_fees,10.952420073295183
+15m,DEVELOPMENT,total_slippage,5.476210856396322
+15m,DEVELOPMENT,signals,4589
+15m,DEVELOPMENT,filled_trades,417
+15m,DEVELOPMENT,closed_trades,416
+15m,DEVELOPMENT,open_end_of_data,1
+15m,DEVELOPMENT,ignored_signals,4172
+15m,DEVELOPMENT,ignored_position_open,4172
+15m,DEVELOPMENT,ignored_no_next_candle,0
+15m,DEVELOPMENT,ignored_insufficient_cash,0
+15m,DEVELOPMENT,tp_count,139
+15m,DEVELOPMENT,sl_count,277
+15m,DEVELOPMENT,win_count,139
+15m,DEVELOPMENT,loss_count,277
+15m,DEVELOPMENT,scratch_count,0
+15m,DEVELOPMENT,win_rate,0.33413461538461536
+15m,DEVELOPMENT,loss_rate,0.6658653846153846
+15m,DEVELOPMENT,average_winning_trade,0.2317452597835732
+15m,DEVELOPMENT,average_losing_trade,-0.16376254403621468
+15m,DEVELOPMENT,median_winning_trade,0.24476435998615026
+15m,DEVELOPMENT,median_losing_trade,-0.16517400826573747
+15m,DEVELOPMENT,profit_factor,0.710119296933745
+15m,DEVELOPMENT,average_net_pnl_per_closed_trade,-0.03160969612527595
+15m,DEVELOPMENT,average_R_per_closed_trade,-0.24754975841345628
+15m,DEVELOPMENT,expectancy_per_trade,-0.03160969612527595
+15m,DEVELOPMENT,expectancy_R,-0.24754975841345628
+15m,DEVELOPMENT,median_R,-1.2484504999999912
+15m,DEVELOPMENT,total_R,-102.9806994999978
+15m,DEVELOPMENT,average_holding_time,0 days 08:19:15.288461538
+15m,DEVELOPMENT,median_holding_time,0 days 04:00:00
+15m,DEVELOPMENT,max_holding_time,3 days 05:30:00
+15m,DEVELOPMENT,average_holding_candles,99.85096153666667
+15m,DEVELOPMENT,median_holding_candles,48.0
+15m,DEVELOPMENT,max_holding_candles,930.0
+15m,DEVELOPMENT,max_consecutive_wins,6
+15m,DEVELOPMENT,max_consecutive_losses,11
+15m,DEVELOPMENT,max_drawdown,14.453616402423782
+15m,DEVELOPMENT,max_drawdown_pct,0.6816069746432853
+15m,DEVELOPMENT,max_drawdown_peak_timestamp,2024-01-02 09:15:00+00:00
+15m,DEVELOPMENT,max_drawdown_trough_timestamp,2024-08-21 16:00:00+00:00
+15m,DEVELOPMENT,largest_win_net_pnl,0.3613518339605379
+15m,DEVELOPMENT,sum_of_winning_net_pnl,32.212591109916666
+15m,DEVELOPMENT,months_with_closed_trades,8
+15m,DEVELOPMENT,max_month_share_of_net,
+15m,DEVELOPMENT,open_entry_fees,0.006843522888996833
+15m,DEVELOPMENT,unresolved_reserved,6.85036641188583
+1h,DEVELOPMENT,starting_capital,20.0
+1h,DEVELOPMENT,ending_cash,9.501701716466531
+1h,DEVELOPMENT,ending_realized_equity,9.501701716466096
+1h,DEVELOPMENT,ending_mtm_equity,9.501701716466064
+1h,DEVELOPMENT,total_net_pnl,-10.4982982835339
+1h,DEVELOPMENT,total_gross_pnl,1.5050593078618322
+1h,DEVELOPMENT,total_fees,8.002238143420897
+1h,DEVELOPMENT,total_slippage,4.001119447974836
+1h,DEVELOPMENT,signals,1168
+1h,DEVELOPMENT,filled_trades,271
+1h,DEVELOPMENT,closed_trades,271
+1h,DEVELOPMENT,open_end_of_data,0
+1h,DEVELOPMENT,ignored_signals,897
+1h,DEVELOPMENT,ignored_position_open,897
+1h,DEVELOPMENT,ignored_no_next_candle,0
+1h,DEVELOPMENT,ignored_insufficient_cash,0
+1h,DEVELOPMENT,tp_count,89
+1h,DEVELOPMENT,sl_count,182
+1h,DEVELOPMENT,win_count,89
+1h,DEVELOPMENT,loss_count,182
+1h,DEVELOPMENT,scratch_count,0
+1h,DEVELOPMENT,win_rate,0.3284132841328413
+1h,DEVELOPMENT,loss_rate,0.6715867158671587
+1h,DEVELOPMENT,average_winning_trade,0.2586456454369933
+1h,DEVELOPMENT,average_losing_trade,-0.18416352048036433
+1h,DEVELOPMENT,median_winning_trade,0.2692344789003675
+1h,DEVELOPMENT,median_losing_trade,-0.1907041231638063
+1h,DEVELOPMENT,profit_factor,0.6867840197050054
+1h,DEVELOPMENT,average_net_pnl_per_closed_trade,-0.03873910805732066
+1h,DEVELOPMENT,average_R_per_closed_trade,-0.2646880147601418
+1h,DEVELOPMENT,expectancy_per_trade,-0.03873910805732066
+1h,DEVELOPMENT,expectancy_R,-0.2646880147601418
+1h,DEVELOPMENT,median_R,-1.2484504999999901
+1h,DEVELOPMENT,total_R,-71.73045199999844
+1h,DEVELOPMENT,average_holding_time,0 days 09:04:38.966789668
+1h,DEVELOPMENT,median_holding_time,0 days 05:00:00
+1h,DEVELOPMENT,max_holding_time,3 days 08:00:00
+1h,DEVELOPMENT,average_holding_candles,108.92988929666666
+1h,DEVELOPMENT,median_holding_candles,60.0
+1h,DEVELOPMENT,max_holding_candles,960.0
+1h,DEVELOPMENT,max_consecutive_wins,4
+1h,DEVELOPMENT,max_consecutive_losses,11
+1h,DEVELOPMENT,max_drawdown,10.588800885538586
+1h,DEVELOPMENT,max_drawdown_pct,0.5294400442769293
+1h,DEVELOPMENT,max_drawdown_peak_timestamp,2024-01-01 00:00:00+00:00
+1h,DEVELOPMENT,max_drawdown_trough_timestamp,2024-08-22 17:00:00+00:00
+1h,DEVELOPMENT,largest_win_net_pnl,0.33937299583401753
+1h,DEVELOPMENT,sum_of_winning_net_pnl,23.019462443892404
+1h,DEVELOPMENT,months_with_closed_trades,8
+1h,DEVELOPMENT,max_month_share_of_net,
+1h,DEVELOPMENT,open_entry_fees,0.0
+1h,DEVELOPMENT,unresolved_reserved,0.0

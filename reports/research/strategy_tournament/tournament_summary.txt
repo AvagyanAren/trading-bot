@@ -1,0 +1,134 @@
+# BTCUSDT strategy tournament - 2024 development / validation
+
+Generated: 2026-09-12 13:08:39 UTC
+Command: .\.venv\Scripts\python.exe scripts\run_strategy_tournament.py
+Git commit: 527b51aaf767d5e4ceed72bf673b4ff3db5205de
+Execution time: 1409.5s
+Dataset: BTCUSDT spot 5m 2024-01-01 .. 2024-12-31 UTC (2025 files never opened)
+Resampled: 15m and 1h from 2024 5m only
+Strategies: 30  Timeframes: 3  Backtests: 180
+Random seed: 20240101  random p=0.08333333333333333
+Starting capital: $20  risk 1%  slip 0.05%  fees 0.1%+0.1%
+G04 time bucket (frozen market audit): 08-12 UTC
+
+This is research. It is not live trading, paper trading, or approval to trade.
+Parameters were predetermined. No grid search. No 2025 selection.
+
+------------------------------------------------------------------------------
+Reproducibility / safety
+------------------------------------------------------------------------------
+BASELINE_A full-2024 integrity MATCH: replay net=-14.17096304 closed=436 vs frozen net=-14.17096304 closed=436
+2025 data used for selection: NO
+Live / paper / Binance API: NO
+Production / executor / v0.3-v0.9 code modified: NO
+Existing reports overwritten: NO (wrote only reports/research/strategy_tournament/)
+Parameter grid search / optimization: NO
+Deterministic definitions: YES (plus one seeded random occupancy path)
+
+------------------------------------------------------------------------------
+Predetermined definitions (not optimized)
+------------------------------------------------------------------------------
+bullish candle: close > open
+bullish reversal: prior close < prior open AND current close > current open
+N-bar breakout: close > max(high of previous N bars); current high excluded
+pullback to EMA20: prior close > prior EMA20, current low <= EMA20, close >= EMA20
+near bottom / top of 24-bar range: position <= 0.25 / >= 0.75
+large negative 6-bar return: <= -1.0%
+low range: previous 12- or 24-bar range < DEVELOPMENT median (frozen per timeframe)
+high volatility: previous 12-bar range >= DEVELOPMENT Q3 (frozen per timeframe)
+E03 expansion: current high-low > median of previous 20 candle ranges
+F04 swing: previous confirmed 3-bar pivot high, known at confirmation bar
+G04 bucket: 08-12 from market audit 01_time_of_day (highest 12h race delta vs ALL)
+Independent $20 windows: development Jan-Aug; validation Sep-Dec; no equity carry
+
+------------------------------------------------------------------------------
+Counts
+------------------------------------------------------------------------------
+Survived development filters: 0
+Survived development AND validation filters: 0
+GROUP 1 strong: 0
+GROUP 2 interesting but weak: 0
+GROUP 3 failed validation / development filters: 87
+GROUP 4 insufficient sample: 3
+
+------------------------------------------------------------------------------
+1. Which strategy families worked best?
+------------------------------------------------------------------------------
+MEAN REVERSION: 0/12 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.1457100115
+RANGE / MARKET STRUCTURE: 0/12 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.1807954822
+BREAKOUT: 0/12 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.1879048055
+TIME / REGIME: 0/12 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.1943805856
+TREND FOLLOWING: 0/12 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.198558468
+MOMENTUM: 0/12 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.2060896973
+VOLATILITY / REGIME: 0/12 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.2217948752
+BASELINE: 0/3 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.233220564
+RANDOM: 0/3 (strategy x timeframe) in GROUP 1-2; mean validation avg R=-0.2558605087
+
+------------------------------------------------------------------------------
+2. Which timeframes worked best?
+------------------------------------------------------------------------------
+5m: 0/30 in GROUP 1-2; mean validation avg R (ex-random)=-0.2410079464
+15m: 0/30 in GROUP 1-2; mean validation avg R (ex-random)=-0.1256962878
+1h: 0/30 in GROUP 1-2; mean validation avg R (ex-random)=-0.2099326208
+Best by survivor count then mean val avg R: 15m
+
+------------------------------------------------------------------------------
+3. Did any candidate beat BASELINE_A?
+------------------------------------------------------------------------------
+YES, on validation average R AND net PnL (same timeframe): A01/5m, A01/1h, A02/5m, A03/5m, A04/5m, A04/15m, A04/1h, B01/5m, B02/5m, B03/5m, B03/15m, B04/5m, C01/5m, C02/15m, C02/1h, C03/5m, C04/5m, D01/5m, D02/5m, D03/5m
+... 33 total
+
+------------------------------------------------------------------------------
+4. Did any candidate beat RANDOM_BASELINE?
+------------------------------------------------------------------------------
+YES, on validation average R AND net PnL (same timeframe): A01/5m, A01/1h, A02/5m, A02/15m, A02/1h, A03/5m, A03/15m, A03/1h, A04/15m, A04/1h, B01/5m, B01/15m, B01/1h, B02/5m, B02/15m, B02/1h, B03/5m, B03/15m, B03/1h, B04/5m
+... 66 total
+
+------------------------------------------------------------------------------
+5. Which candidates survived both development and validation?
+------------------------------------------------------------------------------
+None.
+
+------------------------------------------------------------------------------
+6. Which results look suspicious?
+------------------------------------------------------------------------------
+C02/15m: VAL_ONE_BIG_WIN, VAL_ONE_MONTH_CONCENTRATION failures=dev_closed_trades<30, val_closed_trades<8, dev_avg_R<=0, dev_net_pnl<=0
+C02/1h: VAL_ONE_BIG_WIN, VAL_ONE_MONTH_CONCENTRATION failures=dev_closed_trades<30, val_closed_trades<8, dev_avg_R<=0, dev_net_pnl<=0
+F01/1h: VAL_ONE_MONTH_CONCENTRATION failures=dev_avg_R<=0, dev_net_pnl<=0
+
+------------------------------------------------------------------------------
+7. Is there evidence of a real directional edge?
+------------------------------------------------------------------------------
+No candidate produced positive average R and net PnL in both development and validation after costs. This does not show a tradeable directional edge on this split.
+
+------------------------------------------------------------------------------
+8. Is 5m still the best timeframe?
+------------------------------------------------------------------------------
+NO - 15m ranked ahead of 5m on survivor count / mean validation avg R. 5m survivors=0.
+
+------------------------------------------------------------------------------
+9. Which candidates deserve 2025 OOS?
+------------------------------------------------------------------------------
+None. Fewer than one candidate met the OOS selection bar.
+
+------------------------------------------------------------------------------
+10. Which strategy families should now be abandoned?
+------------------------------------------------------------------------------
+No (strategy x timeframe) member reached GROUP 1-2: MEAN REVERSION, RANGE / MARKET STRUCTURE, BREAKOUT, TIME / REGIME, TREND FOLLOWING, MOMENTUM, VOLATILITY / REGIME
+
+------------------------------------------------------------------------------
+GROUP 1 detail
+------------------------------------------------------------------------------
+Empty.
+
+------------------------------------------------------------------------------
+Did we find a potentially viable small-edge strategy?
+------------------------------------------------------------------------------
+NO
+
+YES would still be 2024-split only. 2025 OOS has not been run.
+
+------------------------------------------------------------------------------
+Warnings
+------------------------------------------------------------------------------
+- A02 and B01 produced identical 5m signals by construction (20-bar breakout + EMA trend + volume > MA).

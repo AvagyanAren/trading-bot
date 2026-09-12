@@ -1,0 +1,157 @@
+timeframe,period_role,metric,value
+5m,VALIDATION,starting_capital,20.0
+5m,VALIDATION,ending_cash,13.731636185375594
+5m,VALIDATION,ending_realized_equity,13.73163618537537
+5m,VALIDATION,ending_mtm_equity,13.731636185375303
+5m,VALIDATION,total_net_pnl,-6.26836381462463
+5m,VALIDATION,total_gross_pnl,0.8842865261362612
+5m,VALIDATION,total_fees,4.768433413126346
+5m,VALIDATION,total_slippage,2.3842169276345446
+5m,VALIDATION,signals,6239
+5m,VALIDATION,filled_trades,137
+5m,VALIDATION,closed_trades,137
+5m,VALIDATION,open_end_of_data,0
+5m,VALIDATION,ignored_signals,6102
+5m,VALIDATION,ignored_position_open,6102
+5m,VALIDATION,ignored_no_next_candle,0
+5m,VALIDATION,ignored_insufficient_cash,0
+5m,VALIDATION,tp_count,45
+5m,VALIDATION,sl_count,92
+5m,VALIDATION,win_count,45
+5m,VALIDATION,loss_count,92
+5m,VALIDATION,scratch_count,0
+5m,VALIDATION,win_rate,0.3284671532846715
+5m,VALIDATION,loss_rate,0.6715328467153284
+5m,VALIDATION,average_winning_trade,0.30466066435619155
+5m,VALIDATION,average_losing_trade,-0.21715319250710055
+5m,VALIDATION,median_winning_trade,0.3141421030110726
+5m,VALIDATION,median_losing_trade,-0.2222149558031075
+5m,VALIDATION,profit_factor,0.6862381413657076
+5m,VALIDATION,average_net_pnl_per_closed_trade,-0.045754480398719925
+5m,VALIDATION,average_R_per_closed_trade,-0.26452664963503086
+5m,VALIDATION,expectancy_per_trade,-0.045754480398719925
+5m,VALIDATION,expectancy_R,-0.26452664963503086
+5m,VALIDATION,median_R,-1.2484504999999904
+5m,VALIDATION,total_R,-36.24015099999923
+5m,VALIDATION,average_holding_time,0 days 11:14:38.102189781
+5m,VALIDATION,median_holding_time,0 days 04:55:00
+5m,VALIDATION,max_holding_time,3 days 10:05:00
+5m,VALIDATION,average_holding_candles,134.92700729666666
+5m,VALIDATION,median_holding_candles,59.0
+5m,VALIDATION,max_holding_candles,985.0
+5m,VALIDATION,max_consecutive_wins,3
+5m,VALIDATION,max_consecutive_losses,10
+5m,VALIDATION,max_drawdown,6.907047386778141
+5m,VALIDATION,max_drawdown_pct,0.3378510792927569
+5m,VALIDATION,max_drawdown_peak_timestamp,2024-09-13 22:55:00+00:00
+5m,VALIDATION,max_drawdown_trough_timestamp,2024-12-30 21:50:00+00:00
+5m,VALIDATION,largest_win_net_pnl,0.346940857806687
+5m,VALIDATION,sum_of_winning_net_pnl,13.70972989602862
+5m,VALIDATION,months_with_closed_trades,4
+5m,VALIDATION,max_month_share_of_net,
+5m,VALIDATION,open_entry_fees,0.0
+5m,VALIDATION,unresolved_reserved,0.0
+15m,VALIDATION,starting_capital,20.0
+15m,VALIDATION,ending_cash,0.0
+15m,VALIDATION,ending_realized_equity,13.947485266570101
+15m,VALIDATION,ending_mtm_equity,13.90531793239108
+15m,VALIDATION,total_net_pnl,-6.052514733429902
+15m,VALIDATION,total_gross_pnl,0.7028937396299467
+15m,VALIDATION,total_fees,4.503605531557781
+15m,VALIDATION,total_slippage,2.251802941502068
+15m,VALIDATION,signals,2119
+15m,VALIDATION,filled_trades,132
+15m,VALIDATION,closed_trades,131
+15m,VALIDATION,open_end_of_data,1
+15m,VALIDATION,ignored_signals,1987
+15m,VALIDATION,ignored_position_open,1987
+15m,VALIDATION,ignored_no_next_candle,0
+15m,VALIDATION,ignored_insufficient_cash,0
+15m,VALIDATION,tp_count,43
+15m,VALIDATION,sl_count,88
+15m,VALIDATION,win_count,43
+15m,VALIDATION,loss_count,88
+15m,VALIDATION,scratch_count,0
+15m,VALIDATION,win_rate,0.3282442748091603
+15m,VALIDATION,loss_rate,0.6717557251908397
+15m,VALIDATION,average_winning_trade,0.29934080443843414
+15m,VALIDATION,average_losing_trade,-0.2150473786850292
+15m,VALIDATION,median_winning_trade,0.30999777135897283
+15m,VALIDATION,median_losing_trade,-0.2208924262724808
+15m,VALIDATION,profit_factor,0.6801701237335892
+15m,VALIDATION,average_net_pnl_per_closed_trade,-0.04620240254526642
+15m,VALIDATION,average_R_per_closed_trade,-0.26519428244274235
+15m,VALIDATION,expectancy_per_trade,-0.04620240254526642
+15m,VALIDATION,expectancy_R,-0.26519428244274235
+15m,VALIDATION,median_R,-1.2484504999999915
+15m,VALIDATION,total_R,-34.74045099999925
+15m,VALIDATION,average_holding_time,0 days 10:59:53.129770992
+15m,VALIDATION,median_holding_time,0 days 03:45:00
+15m,VALIDATION,max_holding_time,2 days 21:00:00
+15m,VALIDATION,average_holding_candles,131.97709923333332
+15m,VALIDATION,median_holding_candles,45.0
+15m,VALIDATION,max_holding_candles,828.0
+15m,VALIDATION,max_consecutive_wins,3
+15m,VALIDATION,max_consecutive_losses,10
+15m,VALIDATION,max_drawdown,6.393555488250323
+15m,VALIDATION,max_drawdown_pct,0.31517205089670886
+15m,VALIDATION,max_drawdown_peak_timestamp,2024-09-13 22:45:00+00:00
+15m,VALIDATION,max_drawdown_trough_timestamp,2024-12-31 22:45:00+00:00
+15m,VALIDATION,largest_win_net_pnl,0.3426137999905118
+15m,VALIDATION,sum_of_winning_net_pnl,12.871654590852668
+15m,VALIDATION,months_with_closed_trades,4
+15m,VALIDATION,max_month_share_of_net,
+15m,VALIDATION,open_entry_fees,0.013933551714855516
+15m,VALIDATION,unresolved_reserved,13.94748526657037
+1h,VALIDATION,starting_capital,20.0
+1h,VALIDATION,ending_cash,0.0
+1h,VALIDATION,ending_realized_equity,17.130468290365265
+1h,VALIDATION,ending_mtm_equity,17.00577301982189
+1h,VALIDATION,total_net_pnl,-2.869531709634735
+1h,VALIDATION,total_gross_pnl,3.8609628973079864
+1h,VALIDATION,total_fees,4.486995761134848
+1h,VALIDATION,total_slippage,2.243498845807873
+1h,VALIDATION,signals,620
+1h,VALIDATION,filled_trades,118
+1h,VALIDATION,closed_trades,117
+1h,VALIDATION,open_end_of_data,1
+1h,VALIDATION,ignored_signals,502
+1h,VALIDATION,ignored_position_open,502
+1h,VALIDATION,ignored_no_next_candle,0
+1h,VALIDATION,ignored_insufficient_cash,0
+1h,VALIDATION,tp_count,44
+1h,VALIDATION,sl_count,73
+1h,VALIDATION,win_count,44
+1h,VALIDATION,loss_count,73
+1h,VALIDATION,scratch_count,0
+1h,VALIDATION,win_rate,0.37606837606837606
+1h,VALIDATION,loss_rate,0.6239316239316239
+1h,VALIDATION,average_winning_trade,0.3330920845525208
+1h,VALIDATION,average_losing_trade,-0.24007648534172127
+1h,VALIDATION,median_winning_trade,0.340076450190746
+1h,VALIDATION,median_losing_trade,-0.24435601727805223
+1h,VALIDATION,profit_factor,0.8362661236868374
+1h,VALIDATION,average_net_pnl_per_closed_trade,-0.024525912048160126
+1h,VALIDATION,average_R_per_closed_trade,-0.12193711538460997
+1h,VALIDATION,expectancy_per_trade,-0.024525912048160126
+1h,VALIDATION,expectancy_R,-0.12193711538460997
+1h,VALIDATION,median_R,-1.2484504999999906
+1h,VALIDATION,total_R,-14.266642499999367
+1h,VALIDATION,average_holding_time,0 days 10:21:01.538461538
+1h,VALIDATION,median_holding_time,0 days 04:00:00
+1h,VALIDATION,max_holding_time,3 days 05:00:00
+1h,VALIDATION,average_holding_candles,124.20512820333332
+1h,VALIDATION,median_holding_candles,48.0
+1h,VALIDATION,max_holding_candles,924.0
+1h,VALIDATION,max_consecutive_wins,4
+1h,VALIDATION,max_consecutive_losses,6
+1h,VALIDATION,max_drawdown,4.261870163567195
+1h,VALIDATION,max_drawdown_pct,0.20284038918725084
+1h,VALIDATION,max_drawdown_peak_timestamp,2024-09-13 22:00:00+00:00
+1h,VALIDATION,max_drawdown_trough_timestamp,2024-12-12 11:00:00+00:00
+1h,VALIDATION,largest_win_net_pnl,0.3600326996043389
+1h,VALIDATION,sum_of_winning_net_pnl,14.656051720310915
+1h,VALIDATION,months_with_closed_trades,4
+1h,VALIDATION,max_month_share_of_net,
+1h,VALIDATION,open_entry_fees,0.017113354935430102
+1h,VALIDATION,unresolved_reserved,17.13046829036553

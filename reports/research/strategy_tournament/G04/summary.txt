@@ -1,0 +1,93 @@
+# G04 - TIME / REGIME
+
+Definition: EMA20>EMA50; previous 12-bar range < DEVELOPMENT median; market-audit 4-hour bucket 08-12 UTC.
+Execution: v0.4 engine, next-open, 1% SL, 2% TP, 0.05% slippage, 0.1%+0.1% fees,
+1% risk, $20 start, LONG-only, one position, no leverage.
+Development and validation are independent $20 replays. Parameters frozen.
+
+## 5m
+------------------------------------------------------------------------------
+group:               GROUP 3
+robustness_score:    n/a
+flags:               (none)
+gate_failures:       dev_avg_R<=0, dev_net_pnl<=0, val_avg_R<=0, val_net_pnl<=0
+beat BASELINE_A val avg R / net: True / True
+beat RANDOM val avg R / net:     True / True
+val/dev avg R ratio: 0.5314108556
+val/dev PF ratio:    1.247970598
+
+DEVELOPMENT 2024-01-01 .. 2024-08-31
+  closed=165  wins=51  losses=114  win_rate=0.3090909091
+  gross=-0.6936480172  fees=5.165341575  slip=2.582670614  net=-8.441660206
+  avg_net=-0.05116157701  avg_R=-0.3225682182  PF=0.622049094
+  DD$=8.887542795  DD%=0.4367544397  final_equity=11.55833979
+  median_hold=0 days 05:45:00  avg_hold=0 days 11:24:56.363636364
+  win_streak=4  loss_streak=11
+  2/8 months with trades were net-positive
+
+VALIDATION 2024-09-01 .. 2024-12-31
+  closed=89  wins=32  losses=57  win_rate=0.3595505618
+  gross=2.001423581  fees=3.32495461  slip=1.662477805  net=-2.986008834
+  avg_net=-0.03355066106  avg_R=-0.1714162528  PF=0.7762989798
+  DD$=3.701372952  DD%=0.1813867484  final_equity=17.01399117
+  median_hold=0 days 06:15:00  avg_hold=0 days 11:12:45.168539326
+  win_streak=5  loss_streak=7
+  2/4 months with trades were net-positive
+
+## 15m
+------------------------------------------------------------------------------
+group:               GROUP 3
+robustness_score:    n/a
+flags:               (none)
+gate_failures:       dev_avg_R<=0, dev_net_pnl<=0, val_avg_R<=0, val_net_pnl<=0
+beat BASELINE_A val avg R / net: True / True
+beat RANDOM val avg R / net:     True / True
+val/dev avg R ratio: 0.127884296
+val/dev PF ratio:    1.388831732
+
+DEVELOPMENT 2024-01-01 .. 2024-08-31
+  closed=122  wins=40  losses=82  win_rate=0.3278688525
+  gross=0.5900981475  fees=4.208307124  slip=2.10415371  net=-5.722362686
+  avg_net=-0.04690461218  avg_R=-0.2663188607  PF=0.6769101986
+  DD$=6.061032833  DD%=0.3017013976  final_equity=14.27763731
+  median_hold=0 days 05:52:30  avg_hold=0 days 12:58:31.475409836
+  win_streak=4  loss_streak=9
+  2/8 months with trades were net-positive
+
+VALIDATION 2024-09-01 .. 2024-12-31
+  closed=74  wins=30  losses=44  win_rate=0.4054054054
+  gross=3.725454544  fees=2.918328754  slip=1.459165308  net=-0.6520395181
+  avg_net=-0.008811344839  avg_R=-0.034058  PF=0.9401143636
+  DD$=2.318783265  DD%=0.1086852124  final_equity=19.34796048
+  median_hold=0 days 06:00:00  avg_hold=0 days 10:46:12.972972973
+  win_streak=5  loss_streak=4
+  2/4 months with trades were net-positive
+
+## 1h
+------------------------------------------------------------------------------
+group:               GROUP 3
+robustness_score:    n/a
+flags:               (none)
+gate_failures:       dev_avg_R<=0, dev_net_pnl<=0, val_avg_R<=0, val_net_pnl<=0
+beat BASELINE_A val avg R / net: False / False
+beat RANDOM val avg R / net:     False / True
+val/dev avg R ratio: 1.807472354
+val/dev PF ratio:    0.7971875085
+
+DEVELOPMENT 2024-01-01 .. 2024-08-31
+  closed=90  wins=32  losses=58  win_rate=0.3555555556
+  gross=1.873454119  fees=3.381107695  slip=1.690554316  net=-3.198207893
+  avg_net=-0.03553564325  avg_R=-0.1833833  PF=0.7655556966
+  DD$=3.633209799  DD%=0.1777934652  final_equity=16.80179211
+  median_hold=0 days 06:00:00  avg_hold=0 days 11:43:20
+  win_streak=4  loss_streak=8
+  1/8 months with trades were net-positive
+
+VALIDATION 2024-09-01 .. 2024-12-31
+  closed=49  wins=15  losses=34  win_rate=0.306122449
+  gross=-0.3543715241  fees=1.81643427  slip=0.9082170463  net=-3.07902284
+  avg_net=-0.06283720082  avg_R=-0.3314602449  PF=0.6102914385
+  DD$=3.174289818  DD%=0.1579620625  final_equity=16.92097716
+  median_hold=0 days 08:00:00  avg_hold=0 days 14:37:57.551020408
+  win_streak=2  loss_streak=8
+  1/4 months with trades were net-positive
